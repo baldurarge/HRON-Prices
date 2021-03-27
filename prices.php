@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              hr-on.com
- * @since             1.1.1
+ * @since             1.1.2
  * @package           Prices
  *
  * @wordpress-plugin
  * Plugin Name:       HR-ON Prices
  * Plugin URI:        prices
  * Description:       The new price view for HR-ON
- * Version:           1.1.1
+ * Version:           1.1.2
  * Author:            Baldur
  * Author URI:        hr-on.com
  * License:           GPL-2.0+
@@ -32,10 +32,10 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Currently plugin version.
- * Start at version 1.1.1 and use SemVer - https://semver.org
+ * Start at version 1.1.2 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'PRICES_VERSION', '1.1.1' );
+define( 'PRICES_VERSION', '1.1.2' );
 
 /**
  * The code that runs during plugin activation.
@@ -71,7 +71,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-prices.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.1.1
+ * @since    1.1.2
  */
 function run_prices() {
 
