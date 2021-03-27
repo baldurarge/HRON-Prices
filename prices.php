@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       HR-ON Prices
  * Plugin URI:        prices
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       The new price view for HR-ON
  * Version:           1.1.0
  * Author:            Baldur
  * Author URI:        hr-on.com
