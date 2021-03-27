@@ -250,7 +250,7 @@ class WP_GitHub_Updater {
 
 			// refresh every 6 hours
 			if ( false !== $version )
-				set_site_transient( md5($this->config['slug']).'_new_version', $version, 60*60 );
+				set_site_transient( md5($this->config['slug']).'_new_version', $version, 60*10 );
 		}
 
 		return $version;
