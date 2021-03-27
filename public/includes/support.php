@@ -20,7 +20,7 @@ class Support {
             if(get_field('price', $this->id)){
                 $this->price = get_field('price', $this->id);
             }else{
-                $this->price = null;
+                $this->price = 0;
             }
 
 
