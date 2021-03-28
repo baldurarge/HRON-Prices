@@ -123,80 +123,6 @@ function price_admin_page_add() {
     );
 
 
-	// $link_our_new_CPT = 'edit.php?post_type=product';
-
-	// add_menu_page(
-	// 	"Products",
-	// 	"Prices", 
-	// 	"edit_posts",
-	// 	$link_our_new_CPT,
-	// 	null,
-	// 	null,
-	// 	3
-	// );
-
-	// add_submenu_page(
-	// 	$link_our_new_CPT,
-	// 	'Products',
-	// 	'products',
-	// 	'edit_posts',
-	// 	$link_our_new_CPT
-	// );
-
-	// add_submenu_page( string $parent_slug, string $page_title, string $menu_title, string $capability, string $menu_slug, callable $function = '', int $position = null )
-
-	// add_menu_page( string $page_title, string $menu_title, string $capability, string $menu_slug, callable $function = '', string $icon_url = '', int $position = null )
-
-	// add_menu_page(
-	// 	__( 'Prices', 'my-textdomain' ),
-	// 	__( 'Products', 'my-textdomain' ),
-	// 	'manage_options',
-	// 	'prices-page',
-	// 	'my_admin_page_contents',
-	// 	'dashicons-schedule',
-	// 	3
-	// );
-
-	
-
-	// add_submenu_page(
-	// 	'edit.php',
-	// 	'Genre',
-	// 	'Genre',
-	// 	'manage_options',
-	// 	'edit-tags.php?taxonomy=genre'
-	// );
-
-	// add_submenu_page(
-	// 	'prices-page',
-	// 	'products',
-	// 	'products',
-	// 	'manage_options',
-	// 	'products',
-	// 	'my_admin_page_contents_products'
-	// );
-
-	// Create submenu with href to view custom_plugin_post_type
-	// add_submenu_page(
-	// 	'prices-page',
-	// 	'products',
-	// 	'products',
-	// 	'manage_options',
-	// 	$link_our_new_CPT
-	// );
-
-
-
-	// add_menu_page('MyPlugin', 'MyPlugin', 'manage_options', 'myPluginSlug', 'callback_render_plugin_menu');
-
-	// add_menu_page(
-	// 	'Products',
-	// 	'Products',
-	// 	'manage_options',
-	// 	$link_our_new_CPT,
-	// 	'dashicons-schedule',
-	// 	3
-	// );
 }
 
 function my_admin_page_contents() {
@@ -384,8 +310,6 @@ function create_support_cpt() {
 
 }
 add_action( 'init', 'create_support_cpt', 0 );
-
-
 
 
 if( function_exists('acf_add_local_field_group') ):
