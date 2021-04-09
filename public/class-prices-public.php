@@ -285,7 +285,7 @@ function create_newprices_shortcode($atts) {
 					</div>
 					<div class="ba_product_botton_extra_container">
 						<div class="ba_special_collapse_button">
-							See the full list of features and price
+							See the full list of features <span class="toggle-icon"></span>
 						</div>
 					</div>
 				</div>
@@ -300,6 +300,11 @@ function create_newprices_shortcode($atts) {
 					<div class="ba_product_price_container">
 						From<span class="ba_product_price"> <?= $staffProduct->getPriceInNiceText($staffProduct->minPrice) ?> kr.</span><span class="ba_small_yearly"> Yearly</span>
 					</div>
+					<div class="ba_product_botton_extra_container">
+						<div class="ba_special_collapse_button">
+							See the full list of features <span class="toggle-icon"></span>
+						</div>
+					</div>
 					<div class="ba_product_included_container">
 						<ul>
 							<?php foreach ($staffProduct->listOfIncludes as $include => $value) {
@@ -310,11 +315,7 @@ function create_newprices_shortcode($atts) {
 					<div class="ba_product_cta_container">
 						<button data-linkID="<?= '#'.$staffProduct->url ?>" class="ba_cards_button ba_regular_cta_button">Get your final price</button>
 					</div>
-					<div class="ba_product_botton_extra_container">
-						<div class="ba_special_collapse_button">
-							See the full list of features and price
-						</div>
-					</div>
+					
 				</div>
 				
 				<!-- ANCHOR Special product -->
@@ -369,6 +370,7 @@ function create_newprices_shortcode($atts) {
 
 			<!-- ANCHOR PRICE  -->
 			<div class="ba_checkout_container_outer" id="checkoutContainer">
+				<div class="small-extra">So easy</div>
 				<h2>Get up and running in minutes!</h2>
 				<div class="ba_checkout_container" id="baCheckoutView">
 					<div class="ba_settings_container">
@@ -452,7 +454,15 @@ function create_newprices_shortcode($atts) {
 							</div>
 						</div>
 					</div>
-					<div class="ba_price_summary-container">
+					<div class="mobile-ancher"></div>
+					<div class="ba_price_summary-container fade-in-bottom">
+						<div class="price-summary-mobile-header" id="finalSummaryMobileHeader">
+							<div class="interaction-icon"><div class="icon"></div></div>
+							<div class="each-summary-price each-full-price">
+								<div>Total price:</div>
+								<div class="summary-price">From <span class="ba_product_price" id="mobileHeaderPrice">30.000 kr.</span></div>
+							</div>
+						</div>
 						<div class="ba_price_summary">
 							<div class="price-header">
 								<figure><img src="http://hron.local/product/hr-on-recruit/group-89-copy1x/" alt="product logo" /></figure> HR-ON Suite

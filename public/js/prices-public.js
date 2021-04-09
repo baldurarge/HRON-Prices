@@ -50,6 +50,7 @@ jQuery(document).ready(function($){
 		$('.each-support[data-support="standard"]').addClass('active');
 		$('.each_featured_addon').removeClass('active');
 		$('.single-addon-input').prop('checked', false);
+		$('.ba_price_summary-container').removeClass('scrolledTo')
 
 		if(window.location.hash) {
 			var hash = window.location.hash;
@@ -210,6 +211,7 @@ jQuery(document).ready(function($){
 			fullPrice += addon.price;
 		})
 		$('#finalSummary').empty();
+		$('#mobileHeaderPrice').empty();
 		if(priceData.discount >= 1){
 			var priceRemoved = fullPrice * priceData.discount / 100;
 			var totalPrice = fullPrice - priceRemoved;
@@ -231,6 +233,7 @@ jQuery(document).ready(function($){
 				<div class="summary-price">From <span class="ba_product_price" /> ${numberToNiceString(totalPrice)}</span> yearly</div>
 			</div>
 			`)
+			$('#mobileHeaderPrice').append(`${numberToNiceString(totalPrice)}`);
 		}else{
 			$('#finalSummary').append(`
 			<div class="each-summary-price each-full-price">
@@ -238,6 +241,7 @@ jQuery(document).ready(function($){
 				<div class="summary-price">From <span class="ba_product_price" /> ${numberToNiceString(fullPrice)}</span> yearly</div>
 			</div>
 			`)
+			$('#mobileHeaderPrice').append(`${numberToNiceString(fullPrice)}`);
 		}
 
 		
@@ -292,6 +296,15 @@ jQuery(document).ready(function($){
 
 
 
+
+	$(document).on('click', '.ba_special_collapse_button', function(e){
+		$parent = $(this).parent().parent();
+		if($parent.hasClass('active')){
+			$parent.removeClass('active');
+		}else{
+			$parent.addClass('active');
+		}
+	})
 
 	$(document).on('click', '#backToProducts', function(e){
 		$('#checkoutContainer').addClass('fade-out-bottom');
@@ -384,6 +397,41 @@ jQuery(document).ready(function($){
 		renderPrices();
 
 	})
+
+	$(document).on('click', '#finalSummaryMobileHeader', function(e){
+		if(!$('.ba_price_summary-container').hasClass('scrolledTo')){
+			
+			
+			if($('.ba_price_summary-container').hasClass('mobile-active')){
+				$('.ba_price_summary-container').removeClass('mobile-active');
+				$("html").css({ overflow: 'inherit' })
+			}else{
+				$('.ba_price_summary-container').addClass('mobile-active');
+				$("html").css({ overflow: 'hidden' })
+			}
+		}
+	})
+
+
+
+	$.fn.followTo = function(pos){
+		var $this = this;
+		var $window = $(window);
+
+			$window.scroll(function(e){
+				var windowHeight = $window.height();
+				var anchorOffset = $('.mobile-ancher').offset();
+				var stickPos = (anchorOffset.top - windowHeight + 70);
+				if($window.scrollTop() > stickPos){
+					$this.addClass('scrolledTo');
+				}else{
+					$this.removeClass('scrolledTo');
+				}
+			})
+		
+	}
+
+	$('.ba_price_summary-container').followTo(123);
 
 })
 

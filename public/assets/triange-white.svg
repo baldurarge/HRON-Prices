@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="8px" viewBox="0 0 14 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Rectangle</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-7-Copy" transform="translate(-185.000000, -5.000000)" fill="#FFFFFF">
+            <path d="M187.278175,7.27817459 L194.863961,7.27817459 C195.416246,7.27817459 195.863961,7.72588984 195.863961,8.27817459 C195.863961,8.54339108 195.758604,8.797745 195.571068,8.98528137 L187.985281,16.5710678 C187.594757,16.9615921 186.961592,16.9615921 186.571068,16.5710678 C186.383531,16.3835314 186.278175,16.1291775 186.278175,15.863961 L186.278175,8.27817459 C186.278175,7.72588984 186.72589,7.27817459 187.278175,7.27817459 Z" id="Rectangle" transform="translate(191.778175, 12.778175) rotate(-315.000000) translate(-191.778175, -12.778175) "></path>
+        </g>
+    </g>
+</svg>
