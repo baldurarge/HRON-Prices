@@ -73,7 +73,6 @@ class Prices_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/prices-public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -96,8 +95,6 @@ class Prices_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array( 'jquery' ), $this->version, false );
-
 	}
 
 
@@ -111,6 +108,9 @@ function preprint($item){
 	echo '</pre>';
 }
 
+function baldur_shortcode_wp_enqueue_scripts() {
+	
+}
 
 
 // Create Shortcode new_prices
@@ -119,6 +119,10 @@ function create_newprices_shortcode($atts) {
 	require_once('includes/product.php');
 	require_once('includes/support.php');
 	require_once('includes/addon.php');
+
+	wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', '1.0');
+	wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '1.0');
+
 
 	$atts = shortcode_atts(
 		array(
@@ -230,7 +234,7 @@ function create_newprices_shortcode($atts) {
 		ob_start();
     ?>
 		<div class="ba_prices-container">
-		<script type="text/javascript" src="https://livejs.com/live.js"></script>
+		<!-- <script type="text/javascript" src="https://livejs.com/live.js"></script> -->
 		<script>
 			var recruitProduct = '<?php echo json_encode($recruitProduct); ?>';
 			recruitProduct = JSON.parse(recruitProduct);
