@@ -192,14 +192,15 @@ function create_newprices_shortcode($atts) {
 	$silver = null;
 	$standard = null;
 
+
 	foreach ($supportLoop as $key => $value) {
-		if($value->post_title === "Always included"){
+		if(get_field('id', $value->ID) === "standard"){
 			$standard = $value;
 		}
-		if($value->post_title === "Silver package"){
+		if(get_field('id', $value->ID) === "silver"){
 			$silver = $value;
 		}
-		if($value->post_title === "Gold package"){
+		if(get_field('id', $value->ID) === "gold"){
 			$gold = $value;
 		}
 	}
