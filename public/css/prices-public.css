@@ -50,6 +50,15 @@
   padding-bottom: 100px;
 }
 
+.mobile-ancher {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .mobile-ancher {
+    display: block;
+  }
+}
+
 .ba_products_container {
   width: 100%;
   max-width: 1200px;
@@ -717,7 +726,8 @@
 @media screen and (max-width: 768px) {
   .ba_price_summary-container {
     position: fixed;
-    bottom: calc(-100vh + 170px);
+    -webkit-backface-visibility: hidden;
+    bottom: calc(1 * (170px - 100vh));
     left: 0;
     width: 100%;
     z-index: 10;
@@ -774,6 +784,12 @@
   display: flex;
   align-items: center;
   position: relative;
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .ba_price_summary-container #finalSummaryMobileHeader {
+    display: flex;
+  }
 }
 .ba_price_summary-container #finalSummaryMobileHeader .interaction-icon {
   width: 30px;

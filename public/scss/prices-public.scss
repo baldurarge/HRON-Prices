@@ -64,6 +64,12 @@ $breakpoint-mobile: 500px;
     padding-bottom: 100px;
 }
 
+.mobile-ancher{
+    display: none;
+    @media screen and (max-width: $breakpoint-tablet) {
+        display: block;
+    }
+}
 
 .ba_products_container{
     width: 100%;
@@ -894,7 +900,8 @@ $breakpoint-mobile: 500px;
 
     @media screen and (max-width: $breakpoint-tablet) {
      position: fixed;
-     bottom: calc(-100vh + 170px);
+     -webkit-backface-visibility: hidden;
+     bottom: calc(1 * (170px - 100vh));
      left:0;
      width: 100%;
      z-index: 10;
@@ -963,6 +970,11 @@ $breakpoint-mobile: 500px;
         display: flex;
         align-items: center;
         position: relative;
+        display: none;
+
+        @media screen and (max-width: $breakpoint-tablet) {
+            display: flex;
+        }
 
         .interaction-icon{
             width: 30px;

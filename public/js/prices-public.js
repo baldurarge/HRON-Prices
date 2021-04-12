@@ -16,9 +16,22 @@ jQuery(document).ready(function($){
 	}
 
 	initialData = priceData;
+	
 
 	runCheckHash();
 
+	
+
+	// var windowHeight = $( window ).height();
+	// var position = windowHeight - 170;
+	// // $('.ba_price_summary-container').css({bottom:'-' + position + 'px'});
+	// console.log(windowHeight);
+	// $( window ).resize(function() {
+	// windowHeight = $( window ).height();
+	// console.log(windowHeight);
+	// position = windowHeight - 170;
+	// // $('.ba_price_summary-container').css({bottom:'-' + position + 'px'});
+	// });
 	
 
 

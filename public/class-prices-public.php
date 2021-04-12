@@ -455,7 +455,7 @@ function create_newprices_shortcode($atts) {
 						</div>
 					</div>
 					<div class="mobile-ancher"></div>
-					<div class="ba_price_summary-container fade-in-bottom">
+					<div class="ba_price_summary-container fade-in-bottom clearfix" >
 						<div class="price-summary-mobile-header" id="finalSummaryMobileHeader">
 							<div class="interaction-icon"><div class="icon"></div></div>
 							<div class="each-summary-price each-full-price">
