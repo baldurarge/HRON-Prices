@@ -13,10 +13,20 @@ jQuery(document).ready(function($){
 		support:"standard",
 		supportPrice:0,
 		addons:[],
+		imageUrl:null
 	}
 
 	initialData = priceData;
 	
+
+	languageStrings.from = $('.hidden-translate[data-translateID="from"]').val();
+	languageStrings.yearly = $('.hidden-translate[data-translateID="yearly"]').val();
+	languageStrings.totalPrice = $('.hidden-translate[data-translateID="totalPrice"]').val();
+	languageStrings.discount = $('.hidden-translate[data-translateID="discount"]').val();
+	languageStrings.fullPrice = $('.hidden-translate[data-translateID="fullPrice"]').val();
+	languageStrings.addons = $('.hidden-translate[data-translateID="addons"]').val();
+	languageStrings.free = $('.hidden-translate[data-translateID="free"]').val();
+
 
 	runCheckHash();
 
@@ -91,6 +101,8 @@ jQuery(document).ready(function($){
 	function showRecruit(){
 		console.log("RAN");
 		priceData.product = "recruit";
+		priceData.imageUrl = recruitProduct.image;
+		$('#productImageAndName').html('<figure><img src="'+priceData.imageUrl+'" alt="product logo"/></figure> HR-ON Recruit');
 		$('#recruitmentsSelectContainer').addClass('active');
 		$('.single-addon[data-product="recruit"]').addClass('show');
 		$('.single-addon[data-product="both"]').addClass('show');
@@ -101,17 +113,19 @@ jQuery(document).ready(function($){
 	function showStaff(){
 		console.log("RAN");
 		priceData.product = "staff";
+		priceData.imageUrl = staffProduct.image;
+		$('#productImageAndName').html('<figure><img src="'+priceData.imageUrl+'" alt="product logo"/></figure> HR-ON Staff');
 		$('#staffAmountContainer').addClass('active');
 		$('.single-addon[data-product="staff"]').addClass('show');
 		$('.single-addon[data-product="both"]').addClass('show');
-
 		renderPrices();
 	}
 
 	function showBoth(){
 		priceData.product = "suite";
 		priceData.discount = 20;
-
+		priceData.imageUrl = suiteProduct.image;
+		$('#productImageAndName').html('<figure><img src="'+priceData.imageUrl+'" alt="product logo"/></figure> HR-ON Suite');
 		$('#recruitmentsSelectContainer').addClass('active');
 		$('#staffAmountContainer').addClass('active');
 		$('#staffAmountContainer').addClass('mg-right');
@@ -136,7 +150,7 @@ jQuery(document).ready(function($){
 		var html = `
 		<div class="each-basic-price">
 			<div>HR-ON Recruit</div>
-			<div class="summary-price">From ${numberToNiceString(totalPrice)}</div>
+			<div class="summary-price">${languageStrings.from} ${numberToNiceString(totalPrice)}</div>
 		</div>
 		`;
 		return html;
@@ -154,7 +168,7 @@ jQuery(document).ready(function($){
 		var html = `
 		<div class="each-basic-price">
 			<div>HR-ON Staff</div>
-			<div class="summary-price">From ${numberToNiceString(totalPrice)}</div>
+			<div class="summary-price">${languageStrings.from} ${numberToNiceString(totalPrice)}</div>
 		</div>
 		`;
 		return html;
@@ -187,7 +201,7 @@ jQuery(document).ready(function($){
 		if(priceData.addons.length >= 1){
 			$('#addonsSummaryContainer').append(`
 			<div class="price-label">
-				Addons
+				${languageStrings.addons}
 			</div>
 			<div id="addonsPriceContainer">
 			`)
@@ -234,24 +248,24 @@ jQuery(document).ready(function($){
 
 			$('#finalSummary').append(`
 			<div class="each-summary-price">
-				<div>Full price:</div>
-				<div class="summary-price">From ${numberToNiceString(fullPrice)}</div>
+				<div>${languageStrings.fullPrice}</div>
+				<div class="summary-price">${languageStrings.from} ${numberToNiceString(fullPrice)}</div>
 			</div>
 			<div class="each-summary-price">
-				<div>Discount - ${priceData.discountRemoved}%:</div>
+				<div>${languageStrings.discount} - ${priceData.discountRemoved}%:</div>
 				<div class="summary-price">${numberToNiceString(priceRemoved)}</div>
 			</div>
 			<div class="each-summary-price each-full-price">
-				<div>Total price:</div>
-				<div class="summary-price">From <span class="ba_product_price" /> ${numberToNiceString(totalPrice)}</span> yearly</div>
+				<div>${languageStrings.totalPrice}</div>
+				<div class="summary-price">${languageStrings.from} <span class="ba_product_price" /> ${numberToNiceString(totalPrice)}</span> ${languageStrings.yearly}</div>
 			</div>
 			`)
 			$('#mobileHeaderPrice').append(`${numberToNiceString(totalPrice)}`);
 		}else{
 			$('#finalSummary').append(`
 			<div class="each-summary-price each-full-price">
-				<div>Total price:</div>
-				<div class="summary-price">From <span class="ba_product_price" /> ${numberToNiceString(fullPrice)}</span> yearly</div>
+				<div>${languageStrings.totalPrice}</div>
+				<div class="summary-price">${languageStrings.from} <span class="ba_product_price" /> ${numberToNiceString(fullPrice)}</span> ${languageStrings.yearly}</div>
 			</div>
 			`)
 			$('#mobileHeaderPrice').append(`${numberToNiceString(fullPrice)}`);
@@ -264,7 +278,7 @@ jQuery(document).ready(function($){
 	function numberToNiceString(nStr, languge = "danish")
 	{
 		if(parseInt(nStr) <= 0 || nStr === null){
-			return "Free";
+			return languageStrings.free;
 		}
 		if(languge === "danish"){
 			nStr += '';

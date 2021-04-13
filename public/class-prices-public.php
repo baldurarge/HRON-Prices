@@ -262,10 +262,20 @@ function create_newprices_shortcode($atts) {
 			var addonsClass = '<?php echo addslashes($addonsClassBetter); ?>';
 			addonsClass = JSON.parse(addonsClass);
 
+			var languageStrings = {}
 
 
 
 		</script>
+
+			<input class="hidden-translate" hidden data-translateID="from" value="<?php _e('from','prices'); ?>" type="text" />
+			<input class="hidden-translate" hidden data-translateID="free" value="<?php _e('Free','prices'); ?>" type="text" />
+			<input class="hidden-translate" hidden data-translateID="addons" value="<?php _e('addons','prices'); ?>" type="text" />
+			<input class="hidden-translate" hidden data-translateID="fullPrice" value="<?php _e('Full price','prices'); ?>" type="text" />
+			<input class="hidden-translate" hidden data-translateID="discount" value="<?php _e('Discount','prices'); ?>" type="text" />
+			<input class="hidden-translate" hidden data-translateID="totalPrice" value="<?php _e('Total price','prices'); ?>" type="text" />
+			<input class="hidden-translate" hidden data-translateID="yearly" value="<?php _e('Yearly','prices'); ?>" type="text" />
+
 			<div class="ba_products_container" id="baCardsView">
 				<!-- ANCHOR Recruit product -->
 				<div class="ba_each_product ba_regular_product">
@@ -276,7 +286,7 @@ function create_newprices_shortcode($atts) {
 						<h4 class="ba_product_name"><?= $recruitProduct->title ?></h4>
 					</div>
 					<div class="ba_product_price_container">
-						From<span class="ba_product_price"> <?= $recruitProduct->getPriceInNiceText($recruitProduct->minPrice) ?> kr.</span><span class="ba_small_yearly"> Yearly</span>
+						<?= _e('from','prices'); ?><span class="ba_product_price"> <?= $recruitProduct->getPriceInNiceText($recruitProduct->minPrice) ?> kr.</span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
 					</div>
 					<div class="ba_product_included_container">
 						<ul>
@@ -286,11 +296,11 @@ function create_newprices_shortcode($atts) {
 						</ul>
 					</div>
 					<div class="ba_product_cta_container">
-						<button data-linkID="<?= '#'.$recruitProduct->url ?>" class="ba_cards_button ba_regular_cta_button">Get your final price</button>
+						<button data-linkID="<?= '#'.$recruitProduct->url ?>" class="ba_cards_button ba_regular_cta_button"><?= _e('get your final price','prices'); ?></button>
 					</div>
 					<div class="ba_product_botton_extra_container">
 						<div class="ba_special_collapse_button">
-							See the full list of features <span class="toggle-icon"></span>
+							<?= _e('See the full list of features','prices'); ?> <span class="toggle-icon"></span>
 						</div>
 					</div>
 				</div>
@@ -303,11 +313,11 @@ function create_newprices_shortcode($atts) {
 						<h4 class="ba_product_name"><?= $staffProduct->title ?></h4>
 					</div>
 					<div class="ba_product_price_container">
-						From<span class="ba_product_price"> <?= $staffProduct->getPriceInNiceText($staffProduct->minPrice) ?> kr.</span><span class="ba_small_yearly"> Yearly</span>
+					<?= _e('from','prices'); ?><span class="ba_product_price"> <?= $staffProduct->getPriceInNiceText($staffProduct->minPrice) ?> kr.</span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
 					</div>
 					<div class="ba_product_botton_extra_container">
 						<div class="ba_special_collapse_button">
-							See the full list of features <span class="toggle-icon"></span>
+							<?= _e('See the full list of features','prices'); ?> <span class="toggle-icon"></span>
 						</div>
 					</div>
 					<div class="ba_product_included_container">
@@ -318,7 +328,7 @@ function create_newprices_shortcode($atts) {
 						</ul>
 					</div>
 					<div class="ba_product_cta_container">
-						<button data-linkID="<?= '#'.$staffProduct->url ?>" class="ba_cards_button ba_regular_cta_button">Get your final price</button>
+						<button data-linkID="<?= '#'.$staffProduct->url ?>" class="ba_cards_button ba_regular_cta_button"><?= _e('get your final price','prices'); ?></button>
 					</div>
 					
 				</div>
@@ -332,7 +342,7 @@ function create_newprices_shortcode($atts) {
 						<h4 class="ba_product_name"><?= $suiteProduct->title ?></h4>
 					</div>
 					<div class="ba_product_price_container">
-						From<span class="ba_product_price"> <?= $suiteProduct->getPriceInNiceText($suiteProduct->minPrice) ?> kr.</span><span class="ba_small_yearly"> Yearly</span>
+					<?= _e('from','prices'); ?><span class="ba_product_price"> <?= $suiteProduct->getPriceInNiceText($suiteProduct->minPrice) ?> kr.</span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
 					</div>
 					<div class="ba_product_included_container">
 						<ul>
@@ -342,7 +352,7 @@ function create_newprices_shortcode($atts) {
 						</ul>
 					</div>
 					<div class="ba_product_cta_container ba_product_cta_container_special">
-						<button data-linkID="<?= '#'.$suiteProduct->url ?>" class="ba_cards_button ba_major_cta_button">Get your final price</button>
+						<button data-linkID="<?= '#'.$suiteProduct->url ?>" class="ba_cards_button ba_major_cta_button"><?= _e('get your final price','prices'); ?></button>
 					</div>
 					<div class="ba_product_botton_extra_container"></div>
 				</div>
@@ -353,7 +363,7 @@ function create_newprices_shortcode($atts) {
 						<h4 class="ba_product_name"><?= $customProduct->title ?></h4>
 					</div>
 					<div class="ba_product_price_container">
-						<span class="ba_product_price">Your custom pricing</span>
+						<span class="ba_product_price"><?= _e('Your custom pricing','prices'); ?></span>
 					</div>
 					<div class="ba_product_included_container">
 						<?= $customProduct->extraContent ?>
@@ -366,7 +376,7 @@ function create_newprices_shortcode($atts) {
 						</ul> -->
 					</div>
 					<div class="ba_product_cta_container">
-						<button data-linkID="<?= '#'.$customProduct->url ?>" class="ba_cards_button ba_minimal_cta_button">Lets talk</button>
+						<button data-linkID="<?= '#'.$customProduct->url ?>" class="ba_cards_button ba_minimal_cta_button"><?= _e('Lets talk','prices'); ?></button>
 					</div>
 					<div class="ba_product_botton_extra_container"></div>
 				</div>
@@ -375,19 +385,18 @@ function create_newprices_shortcode($atts) {
 
 			<!-- ANCHOR PRICE  -->
 			<div class="ba_checkout_container_outer" id="checkoutContainer">
-				<div class="small-extra">So easy</div>
-				<h2>Get up and running in minutes!</h2>
+				<h2><?= _e('Get up and running in minutes!','prices'); ?></h2>
 				<div class="ba_checkout_container" id="baCheckoutView">
 					<div class="ba_settings_container">
 						<div class="one_settings amount_settings">
 							<div class="back-button-container">
-								<span id="backToProducts" class="ba_hover">Back to packages</span>
+								<span id="backToProducts" class="ba_hover"><?= _e('Back to packages','prices'); ?></span>
 							</div>
 							<div class="ba_row">
 								<div class="ba_form_control" id="recruitmentsSelectContainer">
-									<label class="ba_label" for="recruitments">How many recruitments per year?</label>
+									<label class="ba_label" for="recruitments"><?= _e('How many recruitments per year?','prices'); ?></label>
 									<select name="recruitments" id="recruitments">
-										<option value="0">Choose</option>
+										<option value="0"><?php _e('Choose','prices'); ?></option>
 										<option value="1">0 - 5</option>
 										<option value="5">5 - 10</option>
 										<option value="10">10 - 20</option>
@@ -397,15 +406,15 @@ function create_newprices_shortcode($atts) {
 								</div>
 
 								<div class="ba_form_control" id="staffAmountContainer">
-									<label class="ba_label" for="staffAmount">How many employees do you have?</label>
-									<input type="number" name="staffAmount" id="staffAmount" placeholder="type the amount of employees here" />
+									<label class="ba_label" for="staffAmount"><?= _e('How many employees do you have?','prices'); ?></label>
+									<input type="number" name="staffAmount" id="staffAmount" placeholder="<?php _e('Type the amount of employees here','prices'); ?>" />
 								</div>
 							</div>
 						</div>
 
 						<div class="one_settings support_settings">
 							<div class="settings_small_headline_container">
-								<h5 class="ba_label">Support package</h5>
+								<h5 class="ba_label"><?= _e('Support package','prices'); ?></h5>
 							</div>
 							<div class="support_container">
 								<div class="each-support active ba_hover" data-support="standard" data-price="<?= $standardSupport->price ?>" data-title="<?= $standardSupport->title ?>">
@@ -448,7 +457,7 @@ function create_newprices_shortcode($atts) {
 							<div class="basic_addons_container_outer">
 									<div class="background-box-label-outer">
 										<div class="background-box-label">
-											<h5 class="ba_label">Full list of addons and integrations</h5>
+											<h5 class="ba_label"><?= _e('Full list of addons and integrations','prices'); ?></h5>
 										</div>
 									</div>
 								<div class="basic_addons_container">
@@ -465,12 +474,12 @@ function create_newprices_shortcode($atts) {
 							<div class="interaction-icon"><div class="icon"></div></div>
 							<div class="each-summary-price each-full-price">
 								<div>Total price:</div>
-								<div class="summary-price">From <span class="ba_product_price" id="mobileHeaderPrice">30.000 kr.</span></div>
+								<div class="summary-price"><?= _e('from','prices'); ?> <span class="ba_product_price" id="mobileHeaderPrice">30.000 kr.</span></div>
 							</div>
 						</div>
 						<div class="ba_price_summary">
-							<div class="price-header">
-								<figure><img src="http://hron.local/product/hr-on-recruit/group-89-copy1x/" alt="product logo" /></figure> HR-ON Suite
+							<div class="price-header" id="productImageAndName">
+								<figure><img src="http://hron.local/product/hr-on-recruit/group-89-copy1x/" alt="product logo"/></figure> HR-ON Suite
 							</div>
 							<div class="price-content">
 								<div class="basic-info">
@@ -511,7 +520,7 @@ function create_newprices_shortcode($atts) {
 								</div>
 							</div>
 							<div class="price-footer">
-								<button class="ba_bigCTA">Let's do it!</button>
+								<button class="ba_bigCTA"><?= _e("Let's do it!",'prices'); ?></button>
 							</div>
 						</div>
 					</div>

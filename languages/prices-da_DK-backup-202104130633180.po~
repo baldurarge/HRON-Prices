@@ -1,0 +1,93 @@
+# Copyright (C) 2021 Baldur
+# This file is distributed under the same license as the HR-ON Prices plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: HR-ON Prices 1.2.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/prices\n"
+"Last-Translator: Baldur Arge\n"
+"Language-Team: Danish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-04-12T12:45:57+00:00\n"
+"PO-Revision-Date: 2021-04-13 06:29+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: prices\n"
+"Language: da_DK\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.5.2; wp-5.7"
+
+#: public/class-prices-public.php:396
+msgid "Back to packages"
+msgstr "Tilbage til produkter"
+
+#. Author of the plugin
+msgid "Baldur"
+msgstr "Baldur"
+
+#: public/class-prices-public.php:292 public/class-prices-public.php:319
+#: public/class-prices-public.php:348 public/class-prices-public.php:480
+msgid "from"
+msgstr "Fra"
+
+#: public/class-prices-public.php:463
+msgid "Full list of addons and integrations"
+msgstr "Alle integrationer og tilføjelser"
+
+#: public/class-prices-public.php:391
+msgid "Get up and running in minutes!"
+msgstr "Kom i gang på få minutter"
+
+#: public/class-prices-public.php:302 public/class-prices-public.php:334
+#: public/class-prices-public.php:358
+msgid "get your final price"
+msgstr "Se dit personlige tilbud"
+
+#: public/class-prices-public.php:412
+msgid "How many employees do you have?"
+msgstr "Hvor mange medarbejdere har du?"
+
+#: public/class-prices-public.php:400
+msgid "How many recruitments per year?"
+msgstr "Antal rekrutteringer om året"
+
+#. Plugin Name of the plugin
+msgid "HR-ON Prices"
+msgstr "HR-ON Priser"
+
+#. Author URI of the plugin
+msgid "hr-on.com"
+msgstr "hr-on.com"
+
+#: public/class-prices-public.php:526
+msgid "Let's do it!"
+msgstr "Kom i gang!"
+
+#: public/class-prices-public.php:382
+msgid "Lets talk"
+msgstr "Lad os tale sammen"
+
+#. Plugin URI of the plugin
+msgid "prices"
+msgstr "priser"
+
+#: public/class-prices-public.php:306 public/class-prices-public.php:323
+msgid "See the full list of features"
+msgstr "Se den fulde liste over funktioner"
+
+#: public/class-prices-public.php:420
+msgid "Support package"
+msgstr "Support package"
+
+#. Description of the plugin
+msgid "The new price view for HR-ON"
+msgstr "The new price view for HR-ON"
+
+#: public/class-prices-public.php:292 public/class-prices-public.php:319
+#: public/class-prices-public.php:348
+msgid "Yearly"
+msgstr "Årligt"
+
+#: public/class-prices-public.php:369
+msgid "Your custom pricing"
+msgstr "Din custom pris"

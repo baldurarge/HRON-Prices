@@ -1,0 +1,103 @@
+# Copyright (C) 2021 Baldur
+# This file is distributed under the same license as the HR-ON Prices plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: HR-ON Prices 1.2.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/prices\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-04-13T06:32:38+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: prices\n"
+
+#. Plugin Name of the plugin
+msgid "HR-ON Prices"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "prices"
+msgstr ""
+
+#. Description of the plugin
+msgid "The new price view for HR-ON"
+msgstr ""
+
+#. Author of the plugin
+msgid "Baldur"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "hr-on.com"
+msgstr ""
+
+#: public/class-prices-public.php:292
+#: public/class-prices-public.php:319
+#: public/class-prices-public.php:348
+#: public/class-prices-public.php:480
+msgid "from"
+msgstr ""
+
+#: public/class-prices-public.php:292
+#: public/class-prices-public.php:319
+#: public/class-prices-public.php:348
+msgid "Yearly"
+msgstr ""
+
+#: public/class-prices-public.php:302
+#: public/class-prices-public.php:334
+#: public/class-prices-public.php:358
+msgid "get your final price"
+msgstr ""
+
+#: public/class-prices-public.php:306
+#: public/class-prices-public.php:323
+msgid "See the full list of features"
+msgstr ""
+
+#: public/class-prices-public.php:369
+msgid "Your custom pricing"
+msgstr ""
+
+#: public/class-prices-public.php:382
+msgid "Lets talk"
+msgstr ""
+
+#: public/class-prices-public.php:391
+msgid "Get up and running in minutes!"
+msgstr ""
+
+#: public/class-prices-public.php:396
+msgid "Back to packages"
+msgstr ""
+
+#: public/class-prices-public.php:400
+msgid "How many recruitments per year?"
+msgstr ""
+
+#: public/class-prices-public.php:402
+msgid "Choose"
+msgstr ""
+
+#: public/class-prices-public.php:412
+msgid "How many employees do you have?"
+msgstr ""
+
+#: public/class-prices-public.php:413
+msgid "Type the amount of employees here"
+msgstr ""
+
+#: public/class-prices-public.php:420
+msgid "Support package"
+msgstr ""
+
+#: public/class-prices-public.php:463
+msgid "Full list of addons and integrations"
+msgstr ""
+
+#: public/class-prices-public.php:526
+msgid "Let's do it!"
+msgstr ""
