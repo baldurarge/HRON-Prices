@@ -10,14 +10,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2021-04-12T12:45:57+00:00\n"
-"PO-Revision-Date: 2021-04-13 06:33+0000\n"
+"PO-Revision-Date: 2021-04-13 08:04+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: prices\n"
 "Language: da_DK\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Loco-Version: 2.5.2; wp-5.7"
 
-#: public/class-prices-public.php:396
+#: public/class-prices-public.php:273
+msgid "addons"
+msgstr ""
+
+#: public/class-prices-public.php:393
 msgid "Back to packages"
 msgstr "Tilbage til produkter"
 
@@ -25,33 +29,50 @@ msgstr "Tilbage til produkter"
 msgid "Baldur"
 msgstr "Baldur"
 
-#: public/class-prices-public.php:402
+#: public/class-prices-public.php:399
 msgid "Choose"
 msgstr "Vælg"
 
-#: public/class-prices-public.php:292 public/class-prices-public.php:319
-#: public/class-prices-public.php:348 public/class-prices-public.php:480
+#: public/class-prices-public.php:275
+msgid "Discount"
+msgstr ""
+
+#: public/includes/addon.php:90
+msgid "Featured addons and Integration"
+msgstr ""
+
+#: public/class-prices-public.php:272
+msgid "Free"
+msgstr ""
+
+#: public/class-prices-public.php:271 public/class-prices-public.php:289
+#: public/class-prices-public.php:316 public/class-prices-public.php:345
+#: public/class-prices-public.php:477 public/includes/addon.php:194
 msgid "from"
 msgstr "Fra"
 
-#: public/class-prices-public.php:463
+#: public/class-prices-public.php:460
 msgid "Full list of addons and integrations"
 msgstr "Alle integrationer og tilføjelser"
 
-#: public/class-prices-public.php:391
+#: public/class-prices-public.php:274
+msgid "Full price"
+msgstr ""
+
+#: public/class-prices-public.php:388
 msgid "Get up and running in minutes!"
 msgstr "Kom i gang på få minutter"
 
-#: public/class-prices-public.php:302 public/class-prices-public.php:334
-#: public/class-prices-public.php:358
+#: public/class-prices-public.php:299 public/class-prices-public.php:331
+#: public/class-prices-public.php:355
 msgid "get your final price"
 msgstr "Se dit personlige tilbud"
 
-#: public/class-prices-public.php:412
+#: public/class-prices-public.php:409
 msgid "How many employees do you have?"
 msgstr "Hvor mange medarbejdere har du?"
 
-#: public/class-prices-public.php:400
+#: public/class-prices-public.php:397
 msgid "How many recruitments per year?"
 msgstr "Antal rekrutteringer om året"
 
@@ -63,11 +84,11 @@ msgstr "HR-ON Priser"
 msgid "hr-on.com"
 msgstr "hr-on.com"
 
-#: public/class-prices-public.php:526
+#: public/class-prices-public.php:523
 msgid "Let's do it!"
 msgstr "Kom i gang!"
 
-#: public/class-prices-public.php:382
+#: public/class-prices-public.php:379
 msgid "Lets talk"
 msgstr "Lad os tale sammen"
 
@@ -75,11 +96,11 @@ msgstr "Lad os tale sammen"
 msgid "prices"
 msgstr "priser"
 
-#: public/class-prices-public.php:306 public/class-prices-public.php:323
+#: public/class-prices-public.php:303 public/class-prices-public.php:320
 msgid "See the full list of features"
 msgstr "Se den fulde liste over funktioner"
 
-#: public/class-prices-public.php:420
+#: public/class-prices-public.php:417
 msgid "Support package"
 msgstr "Support package"
 
@@ -87,15 +108,19 @@ msgstr "Support package"
 msgid "The new price view for HR-ON"
 msgstr "The new price view for HR-ON"
 
-#: public/class-prices-public.php:413
+#: public/class-prices-public.php:276
+msgid "Total price"
+msgstr ""
+
+#: public/class-prices-public.php:410
 msgid "Type the amount of employees here"
 msgstr "Indtast antallet af ansatte her"
 
-#: public/class-prices-public.php:292 public/class-prices-public.php:319
-#: public/class-prices-public.php:348
+#: public/class-prices-public.php:277 public/class-prices-public.php:289
+#: public/class-prices-public.php:316 public/class-prices-public.php:345
 msgid "Yearly"
 msgstr "Årligt"
 
-#: public/class-prices-public.php:369
+#: public/class-prices-public.php:366
 msgid "Your custom pricing"
 msgstr "Din custom pris"

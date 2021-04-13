@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-04-13T06:32:38+00:00\n"
+"POT-Creation-Date: 2021-04-13T08:03:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: prices\n"
@@ -34,70 +34,97 @@ msgstr ""
 msgid "hr-on.com"
 msgstr ""
 
-#: public/class-prices-public.php:292
-#: public/class-prices-public.php:319
-#: public/class-prices-public.php:348
-#: public/class-prices-public.php:480
+#: public/class-prices-public.php:271
+#: public/class-prices-public.php:289
+#: public/class-prices-public.php:316
+#: public/class-prices-public.php:345
+#: public/class-prices-public.php:477
+#: public/includes/addon.php:194
 msgid "from"
 msgstr ""
 
-#: public/class-prices-public.php:292
-#: public/class-prices-public.php:319
-#: public/class-prices-public.php:348
+#: public/class-prices-public.php:272
+msgid "Free"
+msgstr ""
+
+#: public/class-prices-public.php:273
+msgid "addons"
+msgstr ""
+
+#: public/class-prices-public.php:274
+msgid "Full price"
+msgstr ""
+
+#: public/class-prices-public.php:275
+msgid "Discount"
+msgstr ""
+
+#: public/class-prices-public.php:276
+msgid "Total price"
+msgstr ""
+
+#: public/class-prices-public.php:277
+#: public/class-prices-public.php:289
+#: public/class-prices-public.php:316
+#: public/class-prices-public.php:345
 msgid "Yearly"
 msgstr ""
 
-#: public/class-prices-public.php:302
-#: public/class-prices-public.php:334
-#: public/class-prices-public.php:358
+#: public/class-prices-public.php:299
+#: public/class-prices-public.php:331
+#: public/class-prices-public.php:355
 msgid "get your final price"
 msgstr ""
 
-#: public/class-prices-public.php:306
-#: public/class-prices-public.php:323
+#: public/class-prices-public.php:303
+#: public/class-prices-public.php:320
 msgid "See the full list of features"
 msgstr ""
 
-#: public/class-prices-public.php:369
+#: public/class-prices-public.php:366
 msgid "Your custom pricing"
 msgstr ""
 
-#: public/class-prices-public.php:382
+#: public/class-prices-public.php:379
 msgid "Lets talk"
 msgstr ""
 
-#: public/class-prices-public.php:391
+#: public/class-prices-public.php:388
 msgid "Get up and running in minutes!"
 msgstr ""
 
-#: public/class-prices-public.php:396
+#: public/class-prices-public.php:393
 msgid "Back to packages"
 msgstr ""
 
-#: public/class-prices-public.php:400
+#: public/class-prices-public.php:397
 msgid "How many recruitments per year?"
 msgstr ""
 
-#: public/class-prices-public.php:402
+#: public/class-prices-public.php:399
 msgid "Choose"
 msgstr ""
 
-#: public/class-prices-public.php:412
+#: public/class-prices-public.php:409
 msgid "How many employees do you have?"
 msgstr ""
 
-#: public/class-prices-public.php:413
+#: public/class-prices-public.php:410
 msgid "Type the amount of employees here"
 msgstr ""
 
-#: public/class-prices-public.php:420
+#: public/class-prices-public.php:417
 msgid "Support package"
 msgstr ""
 
-#: public/class-prices-public.php:463
+#: public/class-prices-public.php:460
 msgid "Full list of addons and integrations"
 msgstr ""
 
-#: public/class-prices-public.php:526
+#: public/class-prices-public.php:523
 msgid "Let's do it!"
+msgstr ""
+
+#: public/includes/addon.php:90
+msgid "Featured addons and Integration"
 msgstr ""

@@ -173,7 +173,7 @@ function create_product_cpt() {
 		'menu_icon' => '',
 		'supports' => array('title', 'custom-fields', 'thumbnail'),
 		'taxonomies' => array(),
-		'public' => false,
+		'public' => true,
 		'show_ui' => true,
 		'show_in_menu' => 'prices',
 		'menu_position' => 1,
@@ -184,7 +184,7 @@ function create_product_cpt() {
 		'hierarchical' => false,
 		'exclude_from_search' => true,
 		'show_in_rest' => true,
-		'publicly_queryable' => true,
+		'publicly_queryable' => false,
 		'capability_type' => 'post',
 	);
 	register_post_type( 'product', $args );
@@ -233,7 +233,7 @@ function create_addon_cpt() {
 		'menu_icon' => '',
 		'supports' => array('title', 'custom-fields'),
 		'taxonomies' => array(),
-		'public' => false,
+		'public' => true,
 		'show_ui' => true,
 		'show_in_menu' => 'prices',
 		'menu_position' => 1,
@@ -244,7 +244,7 @@ function create_addon_cpt() {
 		'hierarchical' => false,
 		'exclude_from_search' => true,
 		'show_in_rest' => true,
-		'publicly_queryable' => true,
+		'publicly_queryable' => false,
 		'capability_type' => 'post',
 	);
 	register_post_type( 'addon', $args );
@@ -292,7 +292,7 @@ function create_support_cpt() {
 		'menu_icon' => '',
 		'supports' => array('title', 'custom-fields'),
 		'taxonomies' => array(),
-		'public' => false,
+		'public' => true,
 		'show_ui' => true,
 		'show_in_menu' => 'prices',
 		'menu_position' => 5,
@@ -303,7 +303,7 @@ function create_support_cpt() {
 		'hierarchical' => false,
 		'exclude_from_search' => true,
 		'show_in_rest' => true,
-		'publicly_queryable' => true,
+		'publicly_queryable' => false,
 		'capability_type' => 'post',
 	);
 	register_post_type( 'support', $args );

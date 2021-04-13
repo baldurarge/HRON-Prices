@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2021-04-12T12:45:57+00:00\n"
-"PO-Revision-Date: 2021-04-13 06:29+0000\n"
+"PO-Revision-Date: 2021-04-13 06:33+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: prices\n"
 "Language: da_DK\n"
@@ -24,6 +24,10 @@ msgstr "Tilbage til produkter"
 #. Author of the plugin
 msgid "Baldur"
 msgstr "Baldur"
+
+#: public/class-prices-public.php:402
+msgid "Choose"
+msgstr "Vælg"
 
 #: public/class-prices-public.php:292 public/class-prices-public.php:319
 #: public/class-prices-public.php:348 public/class-prices-public.php:480
@@ -82,6 +86,10 @@ msgstr "Support package"
 #. Description of the plugin
 msgid "The new price view for HR-ON"
 msgstr "The new price view for HR-ON"
+
+#: public/class-prices-public.php:413
+msgid "Type the amount of employees here"
+msgstr "Indtast antallet af ansatte her"
 
 #: public/class-prices-public.php:292 public/class-prices-public.php:319
 #: public/class-prices-public.php:348

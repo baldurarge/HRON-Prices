@@ -87,7 +87,7 @@ class Addons {
     }
 
     public function getFeaturedAddons(){
-        $html = '<div class="settings_small_headline_container"><h5 class="ba_label">Featured addons and Integration</h5></div><div class="featured_addons_container">';
+        $html = '<div class="settings_small_headline_container"><h5 class="ba_label">' . _e('Featured addons and Integration','prices') . '</h5></div><div class="featured_addons_container">';
         $featuredCount = 0;
         foreach ($this->addonsArray as $key => $value) {
             $feturedFound = false;
