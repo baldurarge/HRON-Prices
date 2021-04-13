@@ -196,7 +196,7 @@
 }
 .ba_products_container .ba_product_included_container ul li {
   font-size: 14px;
-  line-height: 16px;
+  line-height: 18px;
   margin-top: 10px;
   margin-bottom: 10px;
   position: relative;
@@ -368,7 +368,7 @@
 }
 .ba_checkout_container ul li {
   font-size: 14px;
-  line-height: 16px;
+  line-height: 18px;
   margin-top: 10px;
   margin-bottom: 10px;
   position: relative;
@@ -677,6 +677,9 @@
   font-size: 14px;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+.ba_price_summary-container .ba_price_summary .each-basic-price div:first-of-type {
+  max-width: 300px;
 }
 .ba_price_summary-container .ba_price_summary .each-basic-price .summary-price {
   font-size: 16px;

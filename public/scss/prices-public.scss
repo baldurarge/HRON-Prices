@@ -238,7 +238,7 @@ $breakpoint-mobile: 500px;
 
             li{
                 font-size: 14px;
-                line-height: 16px;
+                line-height: 18px;
                 margin-top: 10px;
                 margin-bottom: 10px;
                 position: relative;
@@ -461,7 +461,7 @@ $breakpoint-mobile: 500px;
 
         li{
             font-size: 14px;
-            line-height: 16px;
+            line-height: 18px;
             margin-top: 10px;
             margin-bottom: 10px;
             position: relative;
@@ -842,6 +842,10 @@ $breakpoint-mobile: 500px;
             font-size: 14px;
             padding-top: 10px;
             padding-bottom: 10px;
+
+            div:first-of-type{
+                max-width: 300px;
+            }
 
             .summary-price{
                 font-size: 16px;
