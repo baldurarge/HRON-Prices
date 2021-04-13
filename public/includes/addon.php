@@ -191,7 +191,7 @@ class Addons {
 
     private function getBasicHtml($title, $price, $from, $id, $product){
         if($from){
-            $priceText = "From: " . $this->getPriceInNiceText($price) . ' kr.';
+            $priceText = __('from','prices') .": " . $this->getPriceInNiceText($price) . ' kr.';
         }else{
             $priceText = $this->getPriceInNiceText($price) . ' kr.';
         }
