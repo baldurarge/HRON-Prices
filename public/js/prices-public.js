@@ -244,7 +244,7 @@ jQuery(document).ready(function($){
 			var totalPrice = fullPrice - priceRemoved;
 
 			priceData.fullPrice = fullPrice;
-			priceData.totalPrice;
+			priceData.totalPrice = totalPrice;
 
 			$('#finalSummary').append(`
 			<div class="each-summary-price">
@@ -262,6 +262,7 @@ jQuery(document).ready(function($){
 			`)
 			$('#mobileHeaderPrice').append(`${numberToNiceString(totalPrice)}`);
 		}else{
+			var totalPrice = fullPrice;
 			$('#finalSummary').append(`
 			<div class="each-summary-price each-full-price">
 				<div>${languageStrings.totalPrice}</div>
@@ -269,6 +270,8 @@ jQuery(document).ready(function($){
 			</div>
 			`)
 			$('#mobileHeaderPrice').append(`${numberToNiceString(fullPrice)}`);
+			priceData.fullPrice = fullPrice;
+			priceData.totalPrice = totalPrice;
 		}
 
 		
@@ -437,6 +440,58 @@ jQuery(document).ready(function($){
 				$("html").css({ overflow: 'hidden' })
 			}
 		}
+	})
+
+	$(document).on('click', '#komIGangButton', function(e){
+		e.preventDefault();
+
+		$('#checkoutContainer').addClass('fade-out-bottom');
+		setTimeout(function(){
+			var productName;
+			if(priceData.product === "staff"){
+				productName = "HR-ON Staff";
+			}
+			if(priceData.product === "recruit"){
+				productName = "HR-ON Recruit";
+			}
+			if(priceData.product === "suite"){
+				productName = "HR-ON Suite";
+			}
+
+var stuffForTextArea = `Product: ${productName}
+Amount of Job postings: ${priceData.jobAmount}
+Amount of employees: ${priceData.staffAmount}
+
+Support Package: ${priceData.support}
+Addons: `;
+priceData.addons.forEach(addon => {
+	stuffForTextArea += `
+	-${addon.title}`;
+});
+
+stuffForTextArea += `
+
+Discount: ${priceData.discount}%
+TotalPrice: ${priceData.totalPrice}`;
+
+console.log(priceData);
+			$('#hiddenTextArea').val(stuffForTextArea);
+			$('#productChoosenSubmit').html(`<figure><img src="${priceData.imageUrl}" alt="product logo" /></figure> ${productName}`);
+			$('#checkoutContainer').removeClass('active');
+			$('#checkoutContainer').removeClass('fade-out-bottom');
+			$('#submitContainer').addClass('active');
+		}, 400);
+	})
+
+	$(document).on('click', '#backToCheckout', function(e){
+		e.preventDefault();
+
+		$('#submitContainer').addClass('fade-out-bottom');
+		setTimeout(function(){
+			$('#submitContainer').removeClass('active');
+			$('#submitContainer').removeClass('fade-out-bottom');
+			$('#checkoutContainer').addClass('active');
+		}, 400);
 	})
 
 

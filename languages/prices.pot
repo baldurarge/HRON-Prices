@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-04-13T08:03:49+00:00\n"
+"POT-Creation-Date: 2021-04-14T09:44:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: prices\n"
@@ -34,95 +34,107 @@ msgstr ""
 msgid "hr-on.com"
 msgstr ""
 
-#: public/class-prices-public.php:271
-#: public/class-prices-public.php:289
-#: public/class-prices-public.php:316
-#: public/class-prices-public.php:345
-#: public/class-prices-public.php:477
+#: public/class-prices-public.php:277
+#: public/class-prices-public.php:295
+#: public/class-prices-public.php:322
+#: public/class-prices-public.php:351
+#: public/class-prices-public.php:483
 #: public/includes/addon.php:194
 msgid "from"
 msgstr ""
 
-#: public/class-prices-public.php:272
+#: public/class-prices-public.php:278
 msgid "Free"
 msgstr ""
 
-#: public/class-prices-public.php:273
+#: public/class-prices-public.php:279
 msgid "addons"
 msgstr ""
 
-#: public/class-prices-public.php:274
+#: public/class-prices-public.php:280
 msgid "Full price"
 msgstr ""
 
-#: public/class-prices-public.php:275
+#: public/class-prices-public.php:281
 msgid "Discount"
 msgstr ""
 
-#: public/class-prices-public.php:276
+#: public/class-prices-public.php:282
 msgid "Total price"
 msgstr ""
 
-#: public/class-prices-public.php:277
-#: public/class-prices-public.php:289
-#: public/class-prices-public.php:316
-#: public/class-prices-public.php:345
+#: public/class-prices-public.php:283
+#: public/class-prices-public.php:295
+#: public/class-prices-public.php:322
+#: public/class-prices-public.php:351
 msgid "Yearly"
 msgstr ""
 
-#: public/class-prices-public.php:299
-#: public/class-prices-public.php:331
-#: public/class-prices-public.php:355
+#: public/class-prices-public.php:305
+#: public/class-prices-public.php:337
+#: public/class-prices-public.php:361
 msgid "get your final price"
 msgstr ""
 
-#: public/class-prices-public.php:303
-#: public/class-prices-public.php:320
+#: public/class-prices-public.php:309
+#: public/class-prices-public.php:326
 msgid "See the full list of features"
 msgstr ""
 
-#: public/class-prices-public.php:366
+#: public/class-prices-public.php:372
 msgid "Your custom pricing"
 msgstr ""
 
-#: public/class-prices-public.php:379
+#: public/class-prices-public.php:385
 msgid "Lets talk"
 msgstr ""
 
-#: public/class-prices-public.php:388
+#: public/class-prices-public.php:394
 msgid "Get up and running in minutes!"
 msgstr ""
 
-#: public/class-prices-public.php:393
+#: public/class-prices-public.php:399
 msgid "Back to packages"
 msgstr ""
 
-#: public/class-prices-public.php:397
+#: public/class-prices-public.php:403
 msgid "How many recruitments per year?"
 msgstr ""
 
-#: public/class-prices-public.php:399
+#: public/class-prices-public.php:405
 msgid "Choose"
 msgstr ""
 
-#: public/class-prices-public.php:409
+#: public/class-prices-public.php:415
 msgid "How many employees do you have?"
 msgstr ""
 
-#: public/class-prices-public.php:410
+#: public/class-prices-public.php:416
 msgid "Type the amount of employees here"
 msgstr ""
 
-#: public/class-prices-public.php:417
+#: public/class-prices-public.php:423
 msgid "Support package"
 msgstr ""
 
-#: public/class-prices-public.php:460
+#: public/class-prices-public.php:466
 msgid "Full list of addons and integrations"
 msgstr ""
 
-#: public/class-prices-public.php:523
+#: public/class-prices-public.php:529
 msgid "Let's do it!"
+msgstr ""
+
+#: public/class-prices-public.php:538
+msgid "Back to prices"
+msgstr ""
+
+#: public/class-prices-public.php:563
+msgid "Hej med dig! Im looking forward to talking together!"
+msgstr ""
+
+#: public/class-prices-public.php:569
+msgid "Fill in the form and let us give you a call and set up your demo."
 msgstr ""
 
 #: public/includes/addon.php:90

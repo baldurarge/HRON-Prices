@@ -60,7 +60,7 @@ class Prices_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-
+		wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', $this->version);
 		/**
 		 * This function is provided for demonstration purposes only.
 		 *
@@ -82,6 +82,7 @@ class Prices_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
+		wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), $this->version);
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -120,19 +121,25 @@ function create_newprices_shortcode($atts) {
 	require_once('includes/support.php');
 	require_once('includes/addon.php');
 
-	wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', '1.0');
-	wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '1.0');
+	// wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', '1.0');
+	// wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '1.0');
 
 
-	$atts = shortcode_atts(
-		array(
-			'language' => 'danish',
-		),
-		$atts,
-		'new_prices'
-	);
+	if (get_locale() == 'da_DK') {
+		$signupId = '17840';
+	}else if (get_locale() == 'en_US') {
+		$signupId = '15853';
+	}else{
+		// $signupId = get_locale();
+		$signupId = '15853';
+	}
 
-	$language = $atts['language'];
+	$a = shortcode_atts( array(
+		'foo' => 'something',
+		'bar' => 'something else'
+	), $atts );
+
+	$language = $a['language'];
 
 
 	// ANCHOR products fetching
@@ -235,7 +242,6 @@ function create_newprices_shortcode($atts) {
 		ob_start();
     ?>
 		<div class="ba_prices-container">
-		<!-- <script type="text/javascript" src="https://livejs.com/live.js"></script> -->
 		<script>
 			var recruitProduct = '<?php echo json_encode($recruitProduct); ?>';
 			recruitProduct = JSON.parse(recruitProduct);
@@ -267,7 +273,7 @@ function create_newprices_shortcode($atts) {
 
 
 		</script>
-
+			<script type="text/javascript" src="https://livejs.com/live.js"></script>
 			<input class="hidden-translate" hidden data-translateID="from" value="<?php _e('from','prices'); ?>" type="text" />
 			<input class="hidden-translate" hidden data-translateID="free" value="<?php _e('Free','prices'); ?>" type="text" />
 			<input class="hidden-translate" hidden data-translateID="addons" value="<?php _e('addons','prices'); ?>" type="text" />
@@ -520,10 +526,49 @@ function create_newprices_shortcode($atts) {
 								</div>
 							</div>
 							<div class="price-footer">
-								<button class="ba_bigCTA"><?= _e("Let's do it!",'prices'); ?></button>
+								<button class="ba_bigCTA" id="komIGangButton"><?php _e("Let's do it!",'prices'); ?></button>
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
+			
+			<div class="submit-page-container" id="submitContainer">
+				<div class="back-button-container">
+					<span id="backToCheckout" class="ba_hover"><?= _e('Back to prices','prices'); ?></span>
+				</div>
+				<div class="extra-info-container">
+					<div class="text-content-container">
+						<div class="product-name-container" id="productChoosenSubmit">
+							<figure><img src="http://hron.local/product/hr-on-recruit/group-89-copy1x/" alt="product logo" /></figure> HR-ON Suite
+						</div>
+						<div class="nice-to-know-container">
+							<div class="each-nice">
+								<h4>Great text 1</h4>
+								<p>Some awesome text here and there</p>
+							</div>
+							<div class="each-nice">
+								<h4>Great text 1</h4>
+								<p>Some awesome text here and there</p>
+							</div>
+							<div class="each-nice">
+								<h4>Great text 1</h4>
+								<p>Some awesome text here and there</p>
+							</div>
+						</div>
+					</div>
+					<div class="chat-guy-container">
+						<figure><img src="https://hr-on.com/wp-content/uploads/2021/04/daniel.png" alt="hr-on sales guy" /></figure>
+						<div class="chat-bubble">
+							<?php _e("Hej med dig! Im looking forward to talking together!",'prices'); ?>
+						</div>
+					</div>
+				</div>
+				<div class="submit-form-container">
+					<form action="includes/sendbrev.php" method="post">
+						<h3><?php _e("Fill in the form and let us give you a call and set up your demo.", 'prices'); ?></h3>
+						<?= do_shortcode('[contact-form-7 id="'. $signupId .'" title="Signup Case DK"]'); ?>
+					</form>
 				</div>
 			</div>
 			

@@ -719,7 +719,7 @@
   background: #694CE0 !important;
   border-radius: 6px !important;
   font-family: "roboto" !important;
-  font-size: 20px !important;
+  font-size: 16px !important;
   color: #F6FBFD !important;
   padding-left: 30px !important;
   padding-right: 30px !important;
@@ -842,6 +842,175 @@
   }
 }
 
+.submit-page-container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  padding-top: 50px;
+}
+.submit-page-container .text-content-container {
+  background: #F8FAFB;
+  border-radius: 6px;
+  margin-left: 30px;
+  padding: 50px;
+  padding-right: 100px;
+  padding-bottom: 100px;
+}
+.submit-page-container .text-content-container .product-name-container {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  font-size: 22px;
+  border-bottom: 1px solid rgba(0, 46, 62, 0.2);
+  padding-bottom: 15px;
+}
+.submit-page-container .text-content-container .product-name-container figure {
+  margin-right: 10px;
+}
+.submit-page-container .text-content-container .nice-to-know-container .each-nice {
+  margin-top: 25px;
+  position: relative;
+  padding-left: 25px;
+}
+.submit-page-container .text-content-container .nice-to-know-container .each-nice::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-image: url("../assets/checkbox-purple.svg");
+  background-repeat: no-repeat;
+  background-position: 0px 3px;
+}
+.submit-page-container .text-content-container .nice-to-know-container .each-nice h4 {
+  margin-bottom: 0px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "roboto";
+}
+.submit-page-container .text-content-container .nice-to-know-container .each-nice p {
+  font-size: 16px;
+  font-family: "roboto";
+  font-weight: 300;
+}
+.submit-page-container .chat-guy-container {
+  display: flex;
+  flex-flow: row;
+  align-items: flex-start;
+  margin-left: -25px;
+  margin-right: 25px;
+  margin-top: -50px;
+}
+.submit-page-container .chat-guy-container img {
+  width: 150px;
+}
+.submit-page-container .chat-guy-container .chat-bubble {
+  background: #012D3E;
+  box-shadow: 0 4px 12px -7px rgba(28, 57, 94, 0.5);
+  border-radius: 23px 23px 23px 1px;
+  font-size: 16px;
+  color: #FFFFFF;
+  line-height: 30px;
+  padding: 15px;
+  max-width: 300px;
+}
+.submit-page-container .submit-form-container::before {
+  content: "";
+  width: 50%;
+  height: 80%;
+  position: absolute;
+  border-radius: 6px;
+  bottom: 50px;
+  right: 25px;
+  background: #F7F6FD;
+  z-index: 0;
+  clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+}
+.submit-page-container .submit-form-container form {
+  background: #FFFFFF;
+  border: 1px solid #694CE0 !important;
+  border-radius: 6px;
+  padding: 50px;
+  margin-top: 25px;
+  margin-left: -25px;
+  position: relative;
+  z-index: 2;
+}
+.submit-page-container .submit-form-container form input {
+  background: #F3F6F7 !important;
+  border-radius: 6px !important;
+  border: 0 !important;
+}
+.submit-page-container .submit-form-container form select {
+  background: #F3F6F7 !important;
+  border-radius: 6px !important;
+  border: 0 !important;
+}
+.submit-page-container .submit-form-container form label {
+  opacity: 0.7;
+  font-family: "Roboto";
+  font-size: 14px;
+  color: #012D3E;
+  margin-bottom: 5px;
+  text-align: left !important;
+}
+.submit-page-container .submit-form-container form h3 {
+  font-weight: 400;
+  font-family: "roboto";
+}
+.submit-page-container .submit-form-container form .wpcf7-submit {
+  display: inline-block;
+  background: #694CE0 !important;
+  border-radius: 6px !important;
+  font-family: "roboto" !important;
+  font-size: 16px !important;
+  color: #F6FBFD !important;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+  padding-top: 13px !important;
+  padding-bottom: 13px !important;
+  width: 100% !important;
+}
+.submit-page-container .back-button-container {
+  position: absolute;
+  top: 0;
+  left: 25px;
+}
+.submit-page-container .back-button-container span {
+  font-size: 18px;
+  padding-left: 40px;
+  position: relative;
+}
+.submit-page-container .back-button-container span:before {
+  content: "";
+  width: 30px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  top: 1px;
+  background-image: url("../assets/back-arrow.svg");
+  background-position: center left;
+  background-repeat: no-repeat;
+}
+@media screen and (max-width: 768px) {
+  .submit-page-container {
+    grid-template-columns: 1fr;
+  }
+  .submit-page-container .extra-info-container {
+    display: none;
+  }
+  .submit-page-container .submit-form-container::before {
+    display: none;
+  }
+  .submit-page-container .submit-form-container form {
+    margin: 0;
+  }
+}
+
 #baCardsView {
   display: none;
   -webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
@@ -858,6 +1027,15 @@
   animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 #checkoutContainer.active {
+  display: grid;
+}
+
+#submitContainer {
+  display: none;
+  -webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+#submitContainer.active {
   display: grid;
 }
 
