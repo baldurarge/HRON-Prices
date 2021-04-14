@@ -930,7 +930,7 @@
   z-index: 0;
   clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
 }
-.submit-page-container .submit-form-container form {
+.submit-page-container .submit-form-container .form-change {
   background: #FFFFFF;
   border: 1px solid #694CE0 !important;
   border-radius: 6px;
@@ -940,17 +940,17 @@
   position: relative;
   z-index: 2;
 }
-.submit-page-container .submit-form-container form input {
+.submit-page-container .submit-form-container .form-change input {
   background: #F3F6F7 !important;
   border-radius: 6px !important;
   border: 0 !important;
 }
-.submit-page-container .submit-form-container form select {
+.submit-page-container .submit-form-container .form-change select {
   background: #F3F6F7 !important;
   border-radius: 6px !important;
   border: 0 !important;
 }
-.submit-page-container .submit-form-container form label {
+.submit-page-container .submit-form-container .form-change label {
   opacity: 0.7;
   font-family: "Roboto";
   font-size: 14px;
@@ -958,11 +958,11 @@
   margin-bottom: 5px;
   text-align: left !important;
 }
-.submit-page-container .submit-form-container form h3 {
+.submit-page-container .submit-form-container .form-change h3 {
   font-weight: 400;
   font-family: "roboto";
 }
-.submit-page-container .submit-form-container form .wpcf7-submit {
+.submit-page-container .submit-form-container .form-change .wpcf7-submit {
   display: inline-block;
   background: #694CE0 !important;
   border-radius: 6px !important;
@@ -1006,7 +1006,7 @@
   .submit-page-container .submit-form-container::before {
     display: none;
   }
-  .submit-page-container .submit-form-container form {
+  .submit-page-container .submit-form-container .form-change {
     margin: 0;
   }
 }

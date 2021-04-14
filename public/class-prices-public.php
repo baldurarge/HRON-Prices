@@ -60,7 +60,7 @@ class Prices_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', $this->version);
+		// wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', $this->version);
 		/**
 		 * This function is provided for demonstration purposes only.
 		 *
@@ -82,7 +82,7 @@ class Prices_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), $this->version);
+		// wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), $this->version);
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -121,8 +121,8 @@ function create_newprices_shortcode($atts) {
 	require_once('includes/support.php');
 	require_once('includes/addon.php');
 
-	// wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', '1.0');
-	// wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '1.0');
+	wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', '1.5.0');
+	wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '1.5.0');
 
 
 	if (get_locale() == 'da_DK') {
@@ -273,7 +273,7 @@ function create_newprices_shortcode($atts) {
 
 
 		</script>
-			<script type="text/javascript" src="https://livejs.com/live.js"></script>
+			<!-- <script type="text/javascript" src="https://livejs.com/live.js"></script> -->
 			<input class="hidden-translate" hidden data-translateID="from" value="<?php _e('from','prices'); ?>" type="text" />
 			<input class="hidden-translate" hidden data-translateID="free" value="<?php _e('Free','prices'); ?>" type="text" />
 			<input class="hidden-translate" hidden data-translateID="addons" value="<?php _e('addons','prices'); ?>" type="text" />
@@ -565,13 +565,12 @@ function create_newprices_shortcode($atts) {
 					</div>
 				</div>
 				<div class="submit-form-container">
-					<form action="includes/sendbrev.php" method="post">
+					<div class="form-change" action="includes/sendbrev.php" method="post">
 						<h3><?php _e("Fill in the form and let us give you a call and set up your demo.", 'prices'); ?></h3>
 						<?= do_shortcode('[contact-form-7 id="'. $signupId .'" title="Signup Case DK"]'); ?>
-					</form>
+					</div>
 				</div>
 			</div>
-			
 		</div>
 	<?php
 
