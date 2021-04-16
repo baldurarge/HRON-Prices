@@ -121,8 +121,8 @@ function create_newprices_shortcode($atts) {
 	require_once('includes/support.php');
 	require_once('includes/addon.php');
 
-	wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', '1.5.0');
-	wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '1.5.0');
+	wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', '1.6.0');
+	wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '1.6.0');
 
 
 	if (get_locale() == 'da_DK') {
