@@ -90,8 +90,9 @@ jQuery(document).ready(function($){
 				showBoth();
 				$('#checkoutContainer').addClass('active');
 			}
-			if(hash === "enterprise"){
-	
+			if(hash === "#signup"){
+				console.log("here");
+				showSignup();
 			}
 		} else {
 			$('#baCardsView').addClass('active');
@@ -132,6 +133,11 @@ jQuery(document).ready(function($){
 		$('.single-addon').addClass('show');
 
 		renderPrices();
+	}
+
+	function showSignup(){
+		priceData.product = "enterprise";
+		$('#submitContainer').addClass('active');
 	}
 
 
@@ -350,16 +356,24 @@ jQuery(document).ready(function($){
 
 	$(document).on('click', '.ba_cards_button', function(e){
 		e.preventDefault();
-		var link = $(this).attr("data-linkid")
+		var link = $(this).attr("data-linkid");
 		window.location.hash = link;
-
 		$('#baCardsView').addClass('fade-out-bottom');
-		setTimeout(function(){
+
+		if(link === "#signup"){
 			$('#baCardsView').removeClass('active');
 			$('#baCardsView').removeClass('fade-out-bottom');
-			$('#checkoutContainer').addClass('active');
-			runCheckHash();
-		}, 400);
+			$('#submitContainer').addClass('active');
+		}else{
+			setTimeout(function(){
+				$('#baCardsView').removeClass('active');
+				$('#baCardsView').removeClass('fade-out-bottom');
+				$('#checkoutContainer').addClass('active');
+				runCheckHash();
+			}, 400);
+		}
+
+		
 	})
 
 	$(document).on('keyup', '#staffAmount', function(e){
@@ -458,23 +472,23 @@ jQuery(document).ready(function($){
 				productName = "HR-ON Suite";
 			}
 
-var stuffForTextArea = `Product: ${productName}
-Amount of Job postings: ${priceData.jobAmount}
-Amount of employees: ${priceData.staffAmount}
+			var stuffForTextArea = `Product: ${productName}
+			Amount of Job postings: ${priceData.jobAmount}
+			Amount of employees: ${priceData.staffAmount}
 
-Support Package: ${priceData.support}
-Addons: `;
-priceData.addons.forEach(addon => {
-	stuffForTextArea += `
-	-${addon.title}`;
-});
+			Support Package: ${priceData.support}
+			Addons: `;
+			priceData.addons.forEach(addon => {
+				stuffForTextArea += `
+				-${addon.title}`;
+			});
 
-stuffForTextArea += `
+			stuffForTextArea += `
 
-Discount: ${priceData.discount}%
-TotalPrice: ${priceData.totalPrice}`;
+			Discount: ${priceData.discount}%
+			TotalPrice: ${priceData.totalPrice}`;
 
-console.log(priceData);
+			console.log(priceData);
 			$('#hiddenTextArea').val(stuffForTextArea);
 			$('#productChoosenSubmit').html(`<figure><img src="${priceData.imageUrl}" alt="product logo" /></figure> ${productName}`);
 			$('#checkoutContainer').removeClass('active');
@@ -486,12 +500,25 @@ console.log(priceData);
 	$(document).on('click', '#backToCheckout', function(e){
 		e.preventDefault();
 
-		$('#submitContainer').addClass('fade-out-bottom');
-		setTimeout(function(){
-			$('#submitContainer').removeClass('active');
-			$('#submitContainer').removeClass('fade-out-bottom');
-			$('#checkoutContainer').addClass('active');
-		}, 400);
+		var hash = window.location.hash;
+			console.log(hash);
+			if(hash === "#signup"){
+				$('#submitContainer').addClass('fade-out-bottom');
+				setTimeout(function(){
+					$('#submitContainer').removeClass('active');
+					$('#submitContainer').removeClass('fade-out-bottom');
+					$('#baCardsView').addClass('active');
+				}, 400);
+			}else{
+				$('#submitContainer').addClass('fade-out-bottom');
+				setTimeout(function(){
+					$('#submitContainer').removeClass('active');
+					$('#submitContainer').removeClass('fade-out-bottom');
+					$('#checkoutContainer').addClass('active');
+				}, 400);
+			}
+
+		
 	})
 
 

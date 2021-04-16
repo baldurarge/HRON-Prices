@@ -382,7 +382,7 @@ function create_newprices_shortcode($atts) {
 						</ul> -->
 					</div>
 					<div class="ba_product_cta_container">
-						<button data-linkID="<?= '#'.$customProduct->url ?>" class="ba_cards_button ba_minimal_cta_button"><?= _e('Lets talk','prices'); ?></button>
+						<button data-linkID="#signup" class="ba_cards_button ba_minimal_cta_button"><?= _e('Lets talk','prices'); ?></button>
 					</div>
 					<div class="ba_product_botton_extra_container"></div>
 				</div>
@@ -534,39 +534,23 @@ function create_newprices_shortcode($atts) {
 			</div>
 			
 			<div class="submit-page-container" id="submitContainer">
-				<div class="back-button-container">
-					<span id="backToCheckout" class="ba_hover"><?= _e('Back to prices','prices'); ?></span>
-				</div>
-				<div class="extra-info-container">
-					<div class="text-content-container">
-						<div class="product-name-container" id="productChoosenSubmit">
-							<figure><img src="http://hron.local/product/hr-on-recruit/group-89-copy1x/" alt="product logo" /></figure> HR-ON Suite
-						</div>
-						<div class="nice-to-know-container">
-							<div class="each-nice">
-								<h4>Great text 1</h4>
-								<p>Some awesome text here and there</p>
-							</div>
-							<div class="each-nice">
-								<h4>Great text 1</h4>
-								<p>Some awesome text here and there</p>
-							</div>
-							<div class="each-nice">
-								<h4>Great text 1</h4>
-								<p>Some awesome text here and there</p>
-							</div>
-						</div>
-					</div>
-					<div class="chat-guy-container">
-						<figure><img src="https://hr-on.com/wp-content/uploads/2021/04/daniel.png" alt="hr-on sales guy" /></figure>
+			<div class="each-floatin-person rasmus"><img src="https://hr-on.com/wp-content/uploads/2021/04/Group-19.png" alt="hr-on team member" /></div>
+			<div class="each-floatin-person rikke"><img src="https://hr-on.com/wp-content/uploads/2021/04/Group-17.png" alt="hr-on team member" /></div>
+			<div class="each-floatin-person ali"><img src="https://hr-on.com/wp-content/uploads/2021/04/Group-16.png" alt="hr-on team member" /></div>
+			<div class="each-floatin-person tanya"><img src="https://hr-on.com/wp-content/uploads/2021/04/Group-15.png" alt="hr-on team member" /></div>
+			<div class="each-floatin-person lisbeth"><img src="https://hr-on.com/wp-content/uploads/2021/04/Group-18.png" alt="hr-on team member" /></div>
+				<div class="chat-guy-container">
+						<figure><img src="https://hr-on.com/wp-content/uploads/2021/04/Group-10.png" alt="hr-on sales guy" /></figure>
 						<div class="chat-bubble">
-							<?php _e("Hej med dig! Im looking forward to talking together!",'prices'); ?>
+							<?php _e("Vi er næsten i mål. Udfyld dine oplysninger - så kontakter vi dig hurtigst muligt. Vi glæder os rigtig meget til at høre mere om dig og din virksomheds behov",'prices'); ?>
 						</div>
 					</div>
-				</div>
 				<div class="submit-form-container">
-					<div class="form-change" action="includes/sendbrev.php" method="post">
-						<h3><?php _e("Fill in the form and let us give you a call and set up your demo.", 'prices'); ?></h3>
+					<div class="back-button-container">
+						<span id="backToCheckout" class="ba_hover"><?= _e('Back','prices'); ?></span>
+					</div>
+					<h3><?php _e("Udfyld formularen og bliv ringet op af os", 'prices'); ?></h3>
+					<div class="form-change">
 						<?= do_shortcode('[contact-form-7 id="'. $signupId .'" title="Signup Case DK"]'); ?>
 					</div>
 				</div>
