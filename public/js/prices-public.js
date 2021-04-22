@@ -15,6 +15,7 @@ jQuery(document).ready(function($){
 		addons:[],
 		imageUrl:null
 	}
+	languge = "danish";
 
 	initialData = priceData;
 	
@@ -284,7 +285,7 @@ jQuery(document).ready(function($){
 	}
 
 
-	function numberToNiceString(nStr, languge = "danish")
+	function numberToNiceString(nStr)
 	{
 		if(parseInt(nStr) <= 0 || nStr === null){
 			return languageStrings.free;
@@ -352,7 +353,7 @@ jQuery(document).ready(function($){
 			runCheckHash();
 		}, 400);
 	})
-
+ 
 
 	$(document).on('click', '.ba_cards_button', function(e){
 		e.preventDefault();
@@ -371,17 +372,29 @@ jQuery(document).ready(function($){
 				$('#checkoutContainer').addClass('active');
 				runCheckHash();
 			}, 400);
-		}
+		}    
 
 		
 	})
 
 	$(document).on('keyup', '#staffAmount', function(e){
 		e.preventDefault();
+		console.log(this.value);
+		$('.special-input-message').removeClass('active');
+		$('.price-content').removeClass('hide-content');
+		$('.enterprise-price').removeClass('active');
+		$('.ba_price_summary').removeClass('autoheight');
 		if(this.value === null || this.value === NaN || this.value === ""){
 			priceData.staffAmount = 0;
 		}else{
-			priceData.staffAmount = this.value;
+			if(parseInt(this.value) >= 500){
+				$('.special-input-message').addClass('active');
+				$('.price-content').addClass('hide-content');
+				$('.enterprise-price').addClass('active');
+				$('.ba_price_summary').addClass('autoheight');
+			}else{
+				priceData.staffAmount = this.value;
+			}
 		}
 		renderPrices();
 	})

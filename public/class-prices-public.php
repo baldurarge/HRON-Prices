@@ -121,8 +121,8 @@ function create_newprices_shortcode($atts) {
 	require_once('includes/support.php');
 	require_once('includes/addon.php');
 
-	wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', '1.6.0');
-	wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '1.6.0');
+	wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', '1.7.0');
+	wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '1.7.0');
 
 
 	if (get_locale() == 'da_DK') {
@@ -414,6 +414,7 @@ function create_newprices_shortcode($atts) {
 								<div class="ba_form_control" id="staffAmountContainer">
 									<label class="ba_label" for="staffAmount"><?= _e('How many employees do you have?','prices'); ?></label>
 									<input type="number" name="staffAmount" id="staffAmount" placeholder="<?php _e('Type the amount of employees here','prices'); ?>" />
+									<span class="special-input-message"><?php _e('You are now at enterprise level','prices'); ?></span>
 								</div>
 							</div>
 						</div>
@@ -484,20 +485,25 @@ function create_newprices_shortcode($atts) {
 							</div>
 						</div>
 						<div class="ba_price_summary">
+							
+							<!-- <div class=""></div> -->
 							<div class="price-header" id="productImageAndName">
 								<figure><img src="http://hron.local/product/hr-on-recruit/group-89-copy1x/" alt="product logo"/></figure> HR-ON Suite
+							</div>
+							<div class="enterprise-price">
+								<?php _e('You are at an enterprise level. contact us to get the right price','prices'); ?>
 							</div>
 							<div class="price-content">
 								<div class="basic-info">
 									<div class="price-label">
-										Basic information
+										<?= _e('Basic information','prices'); ?>
 									</div>
 									<div id="basicPriceContainer">
 									</div>
 								</div>
 								<div class="addons-info" id="addonsSummaryContainer">
 									<div class="price-label">
-										Basic information
+										<?= _e('Basic information','prices'); ?>
 									</div>
 									<div id="addonsPriceContainer">
 										<div class="each-basic-price">

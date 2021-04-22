@@ -18,68 +18,76 @@ class Addons {
 
 
     public function getListOfAddons(){
-        $html = '';
-        
+        $html = '<span class="item-label-stuff">Recruit</span>';
+        $staffItemsAddons = '';
+        $recruitItemsAddons = '';
         foreach ($this->addonsArray as $key => $value) {
             if($value->featured === false){
-
-                if(in_array("Recruit", $value->products) && in_array("Staff", $value->products)){
-                    if($value->differentPrice){
-                        if($value->staffFrom || $value->recruitFrom){
-                            if(intval($value->staffPrice) >= intval($value->recruitPrice)){
-                                $html .= $this->getBasicHtml($value->title, $value->staffPrice, true, $value->id, "both");
-                            }else{
-                                $html .= $this->getBasicHtml($value->title, $value->recruitPrice, true, $value->id, "both");
-                            }
-                        }else{
-                            if(intval($value->staffPrice) >= intval($value->recruitPrice)){
-                                $html .= $this->getBasicHtml($value->title, $value->staffPrice, false, $value->id, "both");
-                            }else{
-                                $html .= $this->getBasicHtml($value->title, $value->recruitPrice, false, $value->id, "both");
-                            }
-                        }
-                    }else{
-                        if($value->singleFromPrice){
-                            $html .= $this->getBasicHtml($value->title, $value->singlePrice, true, $value->id, "both");
-                        }else{
-                            $html .= $this->getBasicHtml($value->title, $value->singlePrice, false, $value->id, "both");
-                        }
-                    }
-                }elseif(in_array("Recruit", $value->products)){
+                
+                // if(in_array("Recruit", $value->products) && in_array("Staff", $value->products)){
+                //     if($value->differentPrice){
+                //         if($value->staffFrom || $value->recruitFrom){
+                //             if(intval($value->staffPrice) >= intval($value->recruitPrice)){
+                //                 $html .= $this->getBasicHtml($value->title, $value->staffPrice, true, $value->id, "both");
+                //             }else{
+                //                 $html .= $this->getBasicHtml($value->title, $value->recruitPrice, true, $value->id, "both");
+                //             }
+                //         }else{
+                //             if(intval($value->staffPrice) >= intval($value->recruitPrice)){
+                //                 $html .= $this->getBasicHtml($value->title, $value->staffPrice, false, $value->id, "both");
+                //             }else{
+                //                 $html .= $this->getBasicHtml($value->title, $value->recruitPrice, false, $value->id, "both");
+                //             }
+                //         }
+                //     }else{
+                //         if($value->singleFromPrice){
+                //             $html .= $this->getBasicHtml($value->title, $value->singlePrice, true, $value->id, "both");
+                //         }else{
+                //             $html .= $this->getBasicHtml($value->title, $value->singlePrice, false, $value->id, "both");
+                //         }
+                //     }
+                // }else
+                
+                if(in_array("Recruit", $value->products)){
                     if($value->recruitPrice){
                         if($value->recruitFrom){
-                            $html .= $this->getBasicHtml($value->title, $value->recruitPrice, true, $value->id, "recruit");
+                            $recruitItemsAddons .= $this->getBasicHtml($value->title, $value->recruitPrice, true, $value->id, "recruit");
                         }else{
-                            $html .= $this->getBasicHtml($value->title, $value->recruitPrice, false, $value->id, "recruit");
+                            $recruitItemsAddons .= $this->getBasicHtml($value->title, $value->recruitPrice, false, $value->id, "recruit");
                         }
                     }else{
                         if($value->singleFromPrice){
-                            $html .= $this->getBasicHtml($value->title, $value->singlePrice, true, $value->id, "recruit");
+                            $recruitItemsAddons .= $this->getBasicHtml($value->title, $value->singlePrice, true, $value->id, "recruit");
 
                         }else{
-                            $html .= $this->getBasicHtml($value->title, $value->singlePrice, false, $value->id, "recruit");
+                            $recruitItemsAddons .= $this->getBasicHtml($value->title, $value->singlePrice, false, $value->id, "recruit");
                         }
                     }
-                }elseif(in_array("Staff", $value->products)){
+                }
+                
+                if(in_array("Staff", $value->products)){
                     if($value->differentPrice){
                             
                         if($value->staffFrom){
-                            $html .= $this->getBasicHtml($value->title, $value->staffPrice, true, $value->id, "staff");
+                            $staffItemsAddons .= $this->getBasicHtml($value->title, $value->staffPrice, true, $value->id, "staff");
                         }else{
-                            $html .= $this->getBasicHtml($value->title, $value->staffPrice, false, $value->id, "staff");
-
+                            $staffItemsAddons .= $this->getBasicHtml($value->title, $value->staffPrice, false, $value->id, "staff");
                         }
                     }else{
                         if($value->singleFromPrice){
-                            $html .= $this->getBasicHtml($value->title, $value->singlePrice, true, $value->id, "staff");
+                            $staffItemsAddons .= $this->getBasicHtml($value->title, $value->singlePrice, true, $value->id, "staff");
                         }else{
-                            $html .= $this->getBasicHtml($value->title, $value->singlePrice, false, $value->id, "staff");
+                            $staffItemsAddons .= $this->getBasicHtml($value->title, $value->singlePrice, false, $value->id, "staff");
                         }
                     }
                 }
 
             }
         }
+
+        $html .= $recruitItemsAddons;
+        $html .= '<span class="item-label-stuff">Staff</span>';
+        $html .= $staffItemsAddons;
 
         return $html;
 
@@ -199,8 +207,8 @@ class Addons {
         $htmlReturner = "";
 
         $htmlReturner .= '<li class="single-addon" data-product="'. $product .'">
-                            <input class="ba_hover single-addon-input" data-price="'. $price .'" data-myid="'.$id.'" type="checkbox" name="'. $id .'" value="'. $id .'" id="'. $id .'"  data-title="'.$title.'">
-                            <label for="'. $id .'" class="ba_hover">'. $title .'</label>
+                            <input class="ba_hover single-addon-input" data-price="'. $price .'" data-myid="'.$id.'" type="checkbox" name="'. $product . $id .'" value="'. $id .'" id="'. $product . $id .'"  data-title="'.$title.'">
+                            <label for="'. $product . $id .'" class="ba_hover">'. $title .'</label>
                             <p class="p_price">'. $priceText .'</p>
                         </li>';
 
