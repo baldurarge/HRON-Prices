@@ -284,6 +284,7 @@ function create_newprices_shortcode($atts) {
 
 			<div class="ba_products_container" id="baCardsView">
 				<!-- ANCHOR Recruit product -->
+				<h2 class="my_h2"><?= _e('Tjek pakkerne herunder og vælg, hvad der passer bedst til dine behov.','prices'); ?></h2>
 				<div class="ba_each_product ba_regular_product">
 					<div class="ba_product_header_image">
 						<figure>

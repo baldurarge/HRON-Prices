@@ -81,6 +81,19 @@ $breakpoint-mobile: 500px;
     grid-template-areas:". . . .";
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    padding-top: 70px;
+
+    .my_h2{
+        position: absolute;
+        top: -20px;
+        font-weight: 300;
+        font-family: 'Roboto';
+        font-size: 24px;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
  
     
     .ba_regular_product{
