@@ -405,9 +405,9 @@ function create_newprices_shortcode($atts) {
 									<select name="recruitments" id="recruitments">
 										<option value="0"><?php _e('Choose','prices'); ?></option>
 										<option value="1">0 - 5</option>
-										<option value="5">5 - 10</option>
-										<option value="10">10 - 20</option>
-										<option value="20">20 - 50</option>
+										<option value="8">5 - 10</option>
+										<option value="15">10 - 20</option>
+										<option value="35">20 - 50</option>
 										<option value="50">50+</option>
 									</select>
 								</div>
