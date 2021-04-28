@@ -199,9 +199,9 @@ class Addons {
 
     private function getBasicHtml($title, $price, $from, $id, $product){
         if($from){
-            $priceText = __('from','prices') .": " . $this->getPriceInNiceText($price) . ' kr.';
+            $priceText = __('from','prices') .": " . 'kr. ' . $this->getPriceInNiceText($price);
         }else{
-            $priceText = $this->getPriceInNiceText($price) . ' kr.';
+            $priceText = 'kr. ' . $this->getPriceInNiceText($price);
         }
 
         $htmlReturner = "";
@@ -217,9 +217,9 @@ class Addons {
 
     private function getFeaturedHtml($title, $price, $from, $image, $product, $id){
         if($from){
-            $priceText = "From: " . $this->getPriceInNiceText($price) . ' kr.';
+            $priceText = "From: " . 'kr. ' . $this->getPriceInNiceText($price);
         }else{
-            $priceText = $this->getPriceInNiceText($price) . ' kr.';
+            $priceText = 'kr. ' . $this->getPriceInNiceText($price);
         }
 
         $htmlReturner = "";

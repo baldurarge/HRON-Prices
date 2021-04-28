@@ -293,7 +293,7 @@ function create_newprices_shortcode($atts) {
 						<h4 class="ba_product_name"><?= $recruitProduct->title ?></h4>
 					</div>
 					<div class="ba_product_price_container">
-						<?= _e('from','prices'); ?><span class="ba_product_price">kr. <?= $recruitProduct->getPriceInNiceText($recruitProduct->minPrice) ?></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
+						<?= _e('from','prices'); ?><span class="ba_product_price"> kr. <?= $recruitProduct->getPriceInNiceText($recruitProduct->minPrice) ?></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
 					</div>
 					<div class="ba_product_included_container">
 						<ul>
@@ -320,7 +320,7 @@ function create_newprices_shortcode($atts) {
 						<h4 class="ba_product_name"><?= $staffProduct->title ?></h4>
 					</div>
 					<div class="ba_product_price_container">
-					<?= _e('from','prices'); ?><span class="ba_product_price">kr. <?= $staffProduct->getPriceInNiceText($staffProduct->minPrice) ?></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
+					<?= _e('from','prices'); ?><span class="ba_product_price"> kr. <?= $staffProduct->getPriceInNiceText($staffProduct->minPrice) ?></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
 					</div>
 					<div class="ba_product_botton_extra_container">
 						<div class="ba_special_collapse_button">
@@ -349,7 +349,7 @@ function create_newprices_shortcode($atts) {
 						<h4 class="ba_product_name"><?= $suiteProduct->title ?></h4>
 					</div>
 					<div class="ba_product_price_container">
-					<?= _e('from','prices'); ?><span class="ba_product_price">kr. <?= $suiteProduct->getPriceInNiceText($suiteProduct->minPrice) ?></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
+					<?= _e('from','prices'); ?><span class="ba_product_price"> kr. <?= $suiteProduct->getPriceInNiceText($suiteProduct->minPrice) ?></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
 					</div>
 					<div class="ba_product_included_container">
 						<ul>
