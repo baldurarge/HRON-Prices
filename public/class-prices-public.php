@@ -293,7 +293,7 @@ function create_newprices_shortcode($atts) {
 						<h4 class="ba_product_name"><?= $recruitProduct->title ?></h4>
 					</div>
 					<div class="ba_product_price_container">
-						<?= _e('from','prices'); ?><span class="ba_product_price"> <?= $recruitProduct->getPriceInNiceText($recruitProduct->minPrice) ?> kr.</span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
+						<?= _e('from','prices'); ?><span class="ba_product_price">kr. <?= $recruitProduct->getPriceInNiceText($recruitProduct->minPrice) ?></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
 					</div>
 					<div class="ba_product_included_container">
 						<ul>
@@ -320,7 +320,7 @@ function create_newprices_shortcode($atts) {
 						<h4 class="ba_product_name"><?= $staffProduct->title ?></h4>
 					</div>
 					<div class="ba_product_price_container">
-					<?= _e('from','prices'); ?><span class="ba_product_price"> <?= $staffProduct->getPriceInNiceText($staffProduct->minPrice) ?> kr.</span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
+					<?= _e('from','prices'); ?><span class="ba_product_price">kr. <?= $staffProduct->getPriceInNiceText($staffProduct->minPrice) ?></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
 					</div>
 					<div class="ba_product_botton_extra_container">
 						<div class="ba_special_collapse_button">
@@ -349,7 +349,7 @@ function create_newprices_shortcode($atts) {
 						<h4 class="ba_product_name"><?= $suiteProduct->title ?></h4>
 					</div>
 					<div class="ba_product_price_container">
-					<?= _e('from','prices'); ?><span class="ba_product_price"> <?= $suiteProduct->getPriceInNiceText($suiteProduct->minPrice) ?> kr.</span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
+					<?= _e('from','prices'); ?><span class="ba_product_price">kr. <?= $suiteProduct->getPriceInNiceText($suiteProduct->minPrice) ?></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
 					</div>
 					<div class="ba_product_included_container">
 						<ul>
@@ -432,7 +432,7 @@ function create_newprices_shortcode($atts) {
 											echo '<li>'. $value['include'] .'</li>';
 										}?>
 									</ul>
-									<p class="support_price">Free</p>
+									<p class="support_price"><?php _e('Altid inkluderet','prices'); ?></p>
 								</div>
 								<div class="each-support silver-support ba_hover" data-support="silver" data-price="<?= $silverSupport->price ?>" data-title="<?= $silverSupport->title ?>">
 									<div class="top-bar"></div>
@@ -442,7 +442,7 @@ function create_newprices_shortcode($atts) {
 											echo '<li>'. $value['include'] .'</li>';
 										}?>
 									</ul>
-									<p class="support_price"><?= $silverSupport->getPriceInNiceText($silverSupport->price); ?></p>
+									<p class="support_price">kr. <?= $silverSupport->getPriceInNiceText($silverSupport->price); ?></p>
 								</div>
 
 								<div class="each-support gold-support ba_hover" data-support="gold" data-price="<?= $goldSupport->price ?>" data-title="<?= $goldSupport->title ?>">
@@ -453,7 +453,7 @@ function create_newprices_shortcode($atts) {
 											echo '<li>'. $value['include'] .'</li>';
 										}?>
 									</ul>
-									<p class="support_price"><?= $goldSupport->getPriceInNiceText($goldSupport->price); ?> kr.</p>
+									<p class="support_price">kr. <?= $goldSupport->getPriceInNiceText($goldSupport->price); ?> kr.</p>
 								</div>
 								
 							</div>
@@ -482,7 +482,7 @@ function create_newprices_shortcode($atts) {
 							<div class="interaction-icon"><div class="icon"></div></div>
 							<div class="each-summary-price each-full-price">
 								<div>Total price:</div>
-								<div class="summary-price"><?= _e('from','prices'); ?> <span class="ba_product_price" id="mobileHeaderPrice">30.000 kr.</span></div>
+								<div class="summary-price"><?= _e('from','prices'); ?> <span class="ba_product_price" id="mobileHeaderPrice">kr. 30.000</span></div>
 							</div>
 						</div>
 						<div class="ba_price_summary">
@@ -509,26 +509,26 @@ function create_newprices_shortcode($atts) {
 									<div id="addonsPriceContainer">
 										<div class="each-basic-price">
 											<div>51 - 100 Recruitments per year</div>
-											<div class="summary-price">From 30.000 kr.</div>
+											<div class="summary-price">From kr. 30.000</div>
 										</div>
 										<div class="each-basic-price">
 											<div>51 - 100 Recruitments per year</div>
-											<div class="summary-price">From 30.000 kr.</div>
+											<div class="summary-price">From kr. 30.000</div>
 										</div>
 									</div>
 								</div>
 								<div class="price-summary" id="finalSummary">
 									<div class="each-summary-price">
 										<div>Full price:</div>
-										<div class="summary-price">From 30.000 kr.</div>
+										<div class="summary-price">From kr. 30.000</div>
 									</div>
 									<div class="each-summary-price">
 										<div>Discount - 20%:</div>
-										<div class="summary-price">30.000 kr.</div>
+										<div class="summary-price">kr. 30.000</div>
 									</div>
 									<div class="each-summary-price each-full-price">
 										<div>Total price:</div>
-										<div class="summary-price">From 30.000 kr.</div>
+										<div class="summary-price">From kr. 30.000</div>
 									</div>
 								</div>
 							</div>

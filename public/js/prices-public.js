@@ -299,7 +299,7 @@ jQuery(document).ready(function($){
 			while (rgx.test(x1)) {
 				x1 = x1.replace(rgx, '$1' + '.' + '$2');
 			}
-			return x1 + x2 + ' kr.';
+			return 'kr. ' + x1 + x2 ;
 		}else{
 			nStr += '';
 			x = nStr.split('.');
@@ -309,7 +309,7 @@ jQuery(document).ready(function($){
 			while (rgx.test(x1)) {
 				x1 = x1.replace(rgx, '$1' + ',' + '$2');
 			}
-			return x1 + x2 + ' kr.';
+			return 'kr. ' + x1 + x2 ;
 		}
 		
 	}
