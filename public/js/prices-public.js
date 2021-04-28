@@ -259,7 +259,7 @@ jQuery(document).ready(function($){
 				<div class="summary-price">${languageStrings.from} ${numberToNiceString(fullPrice)}</div>
 			</div>
 			<div class="each-summary-price">
-				<div>${languageStrings.discount} - ${priceData.discountRemoved}%:</div>
+				<div>${languageStrings.discount} ${priceData.discountRemoved}%:</div>
 				<div class="summary-price">${numberToNiceString(priceRemoved)}</div>
 			</div>
 			<div class="each-summary-price each-full-price">

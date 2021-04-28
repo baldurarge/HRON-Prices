@@ -453,7 +453,7 @@ function create_newprices_shortcode($atts) {
 											echo '<li>'. $value['include'] .'</li>';
 										}?>
 									</ul>
-									<p class="support_price">kr. <?= $goldSupport->getPriceInNiceText($goldSupport->price); ?> kr.</p>
+									<p class="support_price">kr. <?= $goldSupport->getPriceInNiceText($goldSupport->price); ?></p>
 								</div>
 								
 							</div>
