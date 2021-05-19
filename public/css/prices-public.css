@@ -181,6 +181,15 @@
   font-size: 18px;
   font-weight: 300;
   position: relative;
+  display: flex;
+  flex-flow: row;
+}
+.ba_products_container .ba_product_price_container .ba_product_price {
+  margin-left: 5px;
+}
+.ba_products_container .ba_product_price_container .ba_product_price .priceForDisplay {
+  margin-right: 5px;
+  margin-left: 2px;
 }
 .ba_products_container .ba_product_price_container::after {
   content: "";
@@ -194,6 +203,8 @@
 .ba_products_container .ba_product_price_container .ba_product_price {
   font-weight: 600;
   font-size: 20px;
+  display: flex;
+  flex-flow: row;
 }
 .ba_products_container .ba_product_price_container .ba_small_yearly {
   font-size: 12px;
@@ -374,6 +385,13 @@
 .ba_checkout_container .p_price {
   font-weight: 400 !important;
   font-family: "roboto" !important;
+  display: flex;
+  flex-flow: row;
+  margin-left: auto;
+}
+.ba_checkout_container .p_price .currency-display {
+  margin-right: 3px;
+  margin-left: 5px;
 }
 .ba_checkout_container ul {
   list-style: none;
@@ -543,6 +561,11 @@
 }
 .ba_checkout_container .support_settings .each-support .support_price {
   margin-top: auto;
+  display: flex;
+  flex-flow: row;
+}
+.ba_checkout_container .support_settings .each-support .support_price .priceForDisplay {
+  margin-left: 3px;
 }
 .ba_checkout_container .addons_settings {
   margin-top: 40px;
@@ -635,6 +658,9 @@
   font-size: 14px;
   opacity: 0.7;
   margin-top: 30px;
+  display: none;
+}
+.ba_checkout_container .addons_settings .basic_addons_container_outer .basic_addons_container .item-label-stuff.show {
   display: inline-block;
 }
 .ba_checkout_container .addons_settings .basic_addons_container_outer .basic_addons_container li {
@@ -713,6 +739,24 @@
 .ba_price_summary-container .ba_price_summary .each-basic-price .summary-price {
   font-size: 16px;
 }
+.ba_price_summary-container .ba_price_summary .summary-price {
+  font-size: 16px;
+  display: flex;
+  flex-flow: row;
+}
+.ba_price_summary-container .ba_price_summary .summary-price .currency-display {
+  margin-left: 5px;
+}
+.ba_price_summary-container .ba_price_summary .summary-price .priceForDisplay {
+  margin-left: 5px;
+}
+.ba_price_summary-container .ba_price_summary .summary-price .ba_product_price {
+  display: flex;
+  flex-flow: row;
+}
+.ba_price_summary-container .ba_price_summary .summary-price .ba_product_price .priceForDisplay {
+  margin-right: 5px;
+}
 .ba_price_summary-container .ba_price_summary .each-summary-price {
   display: flex;
   flex-flow: row;
@@ -771,55 +815,20 @@
   padding-top: 13px !important;
   padding-bottom: 13px !important;
 }
-@media screen and (max-width: 768px) {
-  .ba_price_summary-container {
-    position: fixed;
-    -webkit-backface-visibility: hidden;
-    bottom: calc(1 * (170px - 100vh));
-    left: 0;
-    width: 100%;
-    z-index: 10;
-    max-height: 100vh;
-    height: calc(100vh - 100px);
-    transition: 0.6s ease all;
-  }
-  .ba_price_summary-container .ba_price_summary {
-    margin-top: 0;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    height: calc(100% - 30px);
-    display: grid;
-    grid-template-rows: 40px 1fr 100px;
-    overflow-y: scroll;
-  }
-  .ba_price_summary-container .ba_price_summary .price-content {
-    display: flex;
-    flex-flow: column;
-    padding-top: 10px;
-  }
-  .ba_price_summary-container .ba_price_summary .price-content #finalSummary {
-    margin-top: auto;
-  }
-  .ba_price_summary-container .ba_price_summary .ba_bigCTA {
-    width: 100%;
-  }
-  .ba_price_summary-container .ba_price_summary .price-footer {
-    padding-bottom: 20px;
-  }
-  .ba_price_summary-container.scrolledTo {
-    position: relative;
-    bottom: auto;
-    transition: 0.6s ease all;
-    margin-top: 20px;
-    max-height: initial;
-    height: auto;
-  }
-  .ba_price_summary-container.scrolledTo .ba_price_summary {
-    grid-template-rows: 40px 1fr 70px;
-  }
-  .ba_price_summary-container.scrolledTo .price-footer {
-    padding-bottom: 0px;
-  }
+.ba_price_summary-container #finalSummaryMobileHeader {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.ba_price_summary-container #finalSummaryMobileHeader .summary-price {
+  display: flex;
+  flex-flow: row;
+  align-items: baseline;
+}
+.ba_price_summary-container #finalSummaryMobileHeader .summary-price #mobileHeaderPrice {
+  display: flex;
+  margin-left: 5px;
+  flex-flow: row;
 }
 .ba_price_summary-container #finalSummaryMobileHeader {
   background: #5947C7;
@@ -831,8 +840,7 @@
   height: 70px;
   display: flex;
   align-items: center;
-  position: relative;
-  display: none;
+  display: none !important;
 }
 @media screen and (max-width: 768px) {
   .ba_price_summary-container #finalSummaryMobileHeader {
@@ -870,6 +878,22 @@
   font-weight: 600;
   font-size: 32px;
   padding-left: 3px;
+}
+.ba_price_summary-container #addonsSummaryContainer {
+  background: #F5F7F8;
+  border-radius: 3px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 1px;
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+.ba_price_summary-container #addonsSummaryContainer .price-label {
+  margin-top: 10px;
+}
+.ba_price_summary-container #addonsSummaryContainer .each-basic-price:last-child {
+  border-bottom: 0px !important;
 }
 @media screen and (max-width: 768px) {
   .ba_price_summary-container.mobile-active {
@@ -1065,6 +1089,22 @@
   }
 }
 
+#currencySelectContainer {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  z-index: 10;
+}
+
+#currencySelectContainer {
+  display: none;
+  -webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+#currencySelectContainer.active {
+  display: grid;
+}
+
 #baCardsView {
   display: none;
   -webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.39, 0.575, 0.565, 1) both;
@@ -1109,6 +1149,31 @@
 
 .hidden {
   display: none !important;
+}
+
+:root {
+  --o: 0px;
+}
+
+.around-prices-content {
+  position: relative;
+}
+.around-prices-content .sticky-prices {
+  position: absolute;
+  top: var(--o);
+  left: 0;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .around-prices-content {
+    position: relative;
+  }
+  .around-prices-content .sticky-prices {
+    position: relative;
+    top: auto;
+    left: 0;
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=prices-public.css.map */

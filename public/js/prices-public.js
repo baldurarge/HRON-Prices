@@ -2,12 +2,12 @@ jQuery(document).ready(function($){
 
 	var priceData = {
 		product:null,
-		jobAmount:0,
-		staffAmount:0,
+		jobAmount:15000,
+		staffAmount:15000,
 		recruitPrice:0,
 		staffPrice:0,
 		discount: 0,
-		discountRemoved: 20,
+		discountRemoved: 15,
 		fullPrice: 0,
 		totalPrice: 0,
 		support:"standard",
@@ -15,10 +15,11 @@ jQuery(document).ready(function($){
 		addons:[],
 		imageUrl:null
 	}
-	languge = "danish";
+	var languge = "danish";
+	var langueCheckOnce = false;
+	var currentProduct = null;
 
-	initialData = priceData;
-	
+	var initialData = priceData;
 
 	languageStrings.from = $('.hidden-translate[data-translateID="from"]').val();
 	languageStrings.yearly = $('.hidden-translate[data-translateID="yearly"]').val();
@@ -45,18 +46,30 @@ jQuery(document).ready(function($){
 	// });
 	
 
+	
 
 
 	function runCheckHash(){
+		if(!langueCheckOnce){
+			if (window.location.href.indexOf("prisberegner") > -1) {
+				languge = "danish";
+			}else{
+				languge = "english";
+			}
+			langueCheckOnce = true;
+		}
+
+		currentProduct = null;
+		
 
 		priceData = {
 			product:null,
-			jobAmount:0,
-			staffAmount:0,
+			jobAmount:15000,
+			staffAmount:15000,
 			recruitPrice:0,
 			staffPrice:0,
 			discount: 0,
-			discountRemoved: 20,
+			discountRemoved: 15,
 			fullPrice: 0,
 			totalPrice: 0,
 			support:"standard",
@@ -64,9 +77,8 @@ jQuery(document).ready(function($){
 			addons:[],
 		}
 
-
-		$('#staffAmount').val('');
-		$('#recruitments').val(0);
+		$('#recruitments').val('15000');
+		$('#staffAmount').val('15000');
 		$('#staffAmountContainer').removeClass('mg-right');
 		$('#staffAmountContainer').removeClass('active');
 		$('#recruitmentsSelectContainer').removeClass('active');
@@ -78,26 +90,31 @@ jQuery(document).ready(function($){
 
 		if(window.location.hash) {
 			var hash = window.location.hash;
-			console.log(hash);
 			if(hash === "#recruit"){
+				currentProduct = "recruit";
 				showRecruit();
 				$('#checkoutContainer').addClass('active');
 			}
 			if(hash === "#staff"){
+				currentProduct = "staff";
 				showStaff();
 				$('#checkoutContainer').addClass('active');
 			}
 			if(hash === "#suite"){
+				currentProduct = "both";
 				showBoth();
 				$('#checkoutContainer').addClass('active');
 			}
 			if(hash === "#signup"){
-				console.log("here");
+				currentProduct = "signup";
 				showSignup();
 			}
 		} else {
 			$('#baCardsView').addClass('active');
 		}
+
+		rendercurrency();
+
 	}
 
 	function showRecruit(){
@@ -108,7 +125,12 @@ jQuery(document).ready(function($){
 		$('#recruitmentsSelectContainer').addClass('active');
 		$('.single-addon[data-product="recruit"]').addClass('show');
 		$('.single-addon[data-product="both"]').addClass('show');
+		$('.item-label-stuff-recruit').addClass('show');
 
+		$('.item-label-stuff-staff').removeClass('show');
+		$('.single-addon[data-product="staff"]').removeClass('show');
+		$('#staffmentsSelectContainer').removeClass('active');
+		
 		renderPrices();
 	}
 
@@ -120,18 +142,25 @@ jQuery(document).ready(function($){
 		$('#staffAmountContainer').addClass('active');
 		$('.single-addon[data-product="staff"]').addClass('show');
 		$('.single-addon[data-product="both"]').addClass('show');
+		$('.item-label-stuff-staff').addClass('show');
+
+		$('.item-label-stuff-recruit').removeClass('show');
+		$('.single-addon[data-product="recruit"]').removeClass('show');
+		$('#recruitmentsSelectContainer').removeClass('active');
 		renderPrices();
 	}
 
 	function showBoth(){
 		priceData.product = "suite";
-		priceData.discount = 20;
+		priceData.discount = 15;
 		priceData.imageUrl = suiteProduct.image;
 		$('#productImageAndName').html('<figure><img src="'+priceData.imageUrl+'" alt="product logo"/></figure> HR-ON Suite');
 		$('#recruitmentsSelectContainer').addClass('active');
 		$('#staffAmountContainer').addClass('active');
 		$('#staffAmountContainer').addClass('mg-right');
 		$('.single-addon').addClass('show');
+		$('.item-label-stuff-staff').addClass('show');
+		$('.item-label-stuff-recruit').addClass('show');
 
 		renderPrices();
 	}
@@ -142,40 +171,71 @@ jQuery(document).ready(function($){
 	}
 
 
+	function rendercurrency(){
+		if(languge === "danish"){
+			$('.currency-display').html('kr.');
+			$('#currency').val('dkk');
+			$('.priceForDisplay').each(function(index){
+				var currentAmount = $(this).attr('data-price');
+				$(this).text(returnNiceNumber(currentAmount));
+			})
+		}else{
+			$('.currency-display').html('€');
+			$('#currency').val('euro');
+			$('.priceForDisplay').each(function(index){
+				var currentAmount = $(this).attr('data-price');
+				$(this).text(returnNiceNumber(Math.round(currentAmount * 0.13447822)));
+			})
+		}
+
+		
+
+	}
+
+
 
 
 
 	function renderRecruitPrice(){
-		var minPrice = parseInt(recruitProduct.minPrice);
-		var pricePerJob = parseInt(recruitProduct.pricePerJob);
-		var totalPrice = parseInt(priceData.jobAmount) * pricePerJob;
+		// var minPrice = parseInt(recruitProduct.minPrice);
+		// var pricePerJob = parseInt(recruitProduct.pricePerJob);
+		// var totalPrice = parseInt(priceData.jobAmount) * pricePerJob;
 
-		if(totalPrice <= minPrice){
-			totalPrice = minPrice;
-		}
-		priceData.recruitPrice = totalPrice
+		// if(totalPrice <= minPrice){
+		// 	totalPrice = minPrice;
+		// }
+		// priceData.recruitPrice = totalPrice
+
+
 		var html = `
 		<div class="each-basic-price">
 			<div>HR-ON Recruit</div>
-			<div class="summary-price">${languageStrings.from} ${numberToNiceString(totalPrice)}</div>
+			<div class="summary-price">${languageStrings.from} ${numberToNiceString(priceData.jobAmount)}</div>
 		</div>
 		`;
 		return html;
 	}
 
 	function renderStaffPrice(){
-		var minPrice = parseInt(staffProduct.minPrice);
-		var pricePerUser = parseInt(staffProduct.pricePerUser);
-		var totalPrice = parseInt(priceData.staffAmount) * pricePerUser;
+		// var minPrice = parseInt(staffProduct.minPrice);
+		// var pricePerUser = parseInt(staffProduct.pricePerUser);
+		// var totalPrice = parseInt(priceData.staffAmount) * pricePerUser;
 
-		if(totalPrice <= minPrice){
-			totalPrice = minPrice;
-		}
-		priceData.staffPrice = totalPrice
+		// if(totalPrice <= minPrice){
+		// 	totalPrice = minPrice;
+		// }
+		// priceData.staffPrice = totalPrice
+		// var html = `
+		// <div class="each-basic-price">
+		// 	<div>HR-ON Staff</div>
+		// 	<div class="summary-price">${languageStrings.from} ${numberToNiceString(totalPrice)}</div>
+		// </div>
+		// `;
+
 		var html = `
 		<div class="each-basic-price">
 			<div>HR-ON Staff</div>
-			<div class="summary-price">${languageStrings.from} ${numberToNiceString(totalPrice)}</div>
+			<div class="summary-price">${languageStrings.from} ${numberToNiceString(priceData.staffAmount)}</div>
 		</div>
 		`;
 		return html;
@@ -239,11 +299,23 @@ jQuery(document).ready(function($){
 		$('#basicPriceContainer').append(renderSupport());
 		$('#addonsSummaryContainer').append(renderAddons())
 
-		var fullPrice = priceData.recruitPrice + priceData.staffPrice + priceData.supportPrice;
+		// var fullPrice = priceData.recruitPrice + priceData.staffPrice + priceData.supportPrice;
+		if(currentProduct === "recruit"){
+			var fullPrice = parseInt(priceData.jobAmount) + parseInt(priceData.supportPrice);
 
-		priceData.addons.forEach(function(addon){
-			fullPrice += addon.price;
-		})
+		}else if(currentProduct === "staff"){
+			var fullPrice = parseInt(priceData.staffAmount) + parseInt(priceData.supportPrice);
+
+		}else if(currentProduct === "both"){
+			var fullPrice = parseInt(priceData.jobAmount) + parseInt(priceData.staffAmount) + parseInt(priceData.supportPrice);
+
+		}else{
+			var fullPrice = parseInt(priceData.jobAmount) + parseInt(priceData.staffAmount) + parseInt(priceData.supportPrice);
+		}
+
+		// priceData.addons.forEach(function(addon){
+		// 	fullPrice += addon.price;
+		// })
 		$('#finalSummary').empty();
 		$('#mobileHeaderPrice').empty();
 		if(priceData.discount >= 1){
@@ -252,6 +324,9 @@ jQuery(document).ready(function($){
 
 			priceData.fullPrice = fullPrice;
 			priceData.totalPrice = totalPrice;
+
+
+			console.log('Ran here: ', totalPrice)
 
 			$('#finalSummary').append(`
 			<div class="each-summary-price">
@@ -281,7 +356,7 @@ jQuery(document).ready(function($){
 			priceData.totalPrice = totalPrice;
 		}
 
-		
+		rendercurrency();
 	}
 
 
@@ -290,6 +365,7 @@ jQuery(document).ready(function($){
 		if(parseInt(nStr) <= 0 || nStr === null){
 			return languageStrings.free;
 		}
+		nStr = Math.floor(nStr);
 		if(languge === "danish"){
 			nStr += '';
 			x = nStr.split(',');
@@ -299,7 +375,7 @@ jQuery(document).ready(function($){
 			while (rgx.test(x1)) {
 				x1 = x1.replace(rgx, '$1' + '.' + '$2');
 			}
-			return 'kr. ' + x1 + x2 ;
+			return '<span class="currency-display">kr.</span> <div class="priceForDisplay" data-price="'+nStr+'">' + x1 + x2 +'</div>';
 		}else{
 			nStr += '';
 			x = nStr.split('.');
@@ -309,9 +385,37 @@ jQuery(document).ready(function($){
 			while (rgx.test(x1)) {
 				x1 = x1.replace(rgx, '$1' + ',' + '$2');
 			}
-			return 'kr. ' + x1 + x2 ;
+			return '<span class="currency-display">kr.</span> <div class="priceForDisplay" data-price="'+nStr+'">' + x1 + x2 +'</div>';
 		}
 		
+	}
+
+	function returnNiceNumber(number){
+
+		if(parseInt(number) <= 0 || number === null){
+			return languageStrings.free;
+		}
+		if(languge === "danish"){
+			number += '';
+			x = number.split(',');
+			x1 = x[0];
+			x2 = x.length > 1 ? ',' + x[1] : '';
+			var rgx = /(\d+)(\d{3})/;
+			while (rgx.test(x1)) {
+				x1 = x1.replace(rgx, '$1' + '.' + '$2');
+			}
+			return x1 + x2 ;
+		}else{
+			number += '';
+			x = number.split('.');
+			x1 = x[0];
+			x2 = x.length > 1 ? '.' + x[1] : '';
+			var rgx = /(\d+)(\d{3})/;
+			while (rgx.test(x1)) {
+				x1 = x1.replace(rgx, '$1' + ',' + '$2');
+			}
+			return x1 + x2 ;
+		}
 	}
 
 	function removeElementAddon(array, id) {
@@ -344,6 +448,8 @@ jQuery(document).ready(function($){
 	})
 
 	$(document).on('click', '#backToProducts', function(e){
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+
 		$('#checkoutContainer').addClass('fade-out-bottom');
 		setTimeout(function(){
 			$('#checkoutContainer').removeClass('active');
@@ -357,6 +463,8 @@ jQuery(document).ready(function($){
 
 	$(document).on('click', '.ba_cards_button', function(e){
 		e.preventDefault();
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+
 		var link = $(this).attr("data-linkid");
 		window.location.hash = link;
 		$('#baCardsView').addClass('fade-out-bottom');
@@ -377,33 +485,61 @@ jQuery(document).ready(function($){
 		
 	})
 
-	$(document).on('keyup', '#staffAmount', function(e){
+	// $(document).on('keyup', '#staffAmount', function(e){
+	// 	e.preventDefault();
+	// 	console.log(this.value);
+	// 	$('.special-input-message').removeClass('active');
+	// 	$('.price-content').removeClass('hide-content');
+	// 	$('.enterprise-price').removeClass('active');
+	// 	$('.ba_price_summary').removeClass('autoheight');
+	// 	if(this.value === null || this.value === NaN || this.value === ""){
+	// 		priceData.staffAmount = 0;
+	// 	}else{
+	// 		if(parseInt(this.value) >= 500){
+	// 			$('.special-input-message').addClass('active');
+	// 			$('.price-content').addClass('hide-content');
+	// 			$('.enterprise-price').addClass('active');
+	// 			$('.ba_price_summary').addClass('autoheight');
+	// 		}else{
+	// 			priceData.staffAmount = this.value;
+	// 		}
+	// 	}
+	// 	renderPrices();
+	// })
+
+	$(document).on('change','#staffAmount',function(e){
 		e.preventDefault();
-		console.log(this.value);
-		$('.special-input-message').removeClass('active');
-		$('.price-content').removeClass('hide-content');
-		$('.enterprise-price').removeClass('active');
-		$('.ba_price_summary').removeClass('autoheight');
-		if(this.value === null || this.value === NaN || this.value === ""){
-			priceData.staffAmount = 0;
-		}else{
-			if(parseInt(this.value) >= 500){
-				$('.special-input-message').addClass('active');
-				$('.price-content').addClass('hide-content');
-				$('.enterprise-price').addClass('active');
-				$('.ba_price_summary').addClass('autoheight');
-			}else{
-				priceData.staffAmount = this.value;
-			}
-		}
+		priceData.staffAmount = this.value;
+
+		isItEnterprise();
 		renderPrices();
 	})
 
 	$(document).on('change','#recruitments',function(e){
 		e.preventDefault();
 		priceData.jobAmount = this.value;
+		isItEnterprise();
 		renderPrices();
 	})
+
+	function isItEnterprise(){
+		if(priceData.staffAmount === "enterprise"){
+			$('.special-input-message.eneterprise-staff').addClass('active');
+			$('.price-content').addClass('hide-content');
+			$('.enterprise-price').addClass('active');
+			$('.ba_price_summary').addClass('autoheight');
+		}else if(priceData.jobAmount === "enterprise"){
+			$('.special-input-message.eneterprise-recruit').addClass('active');
+			$('.price-content').addClass('hide-content');
+			$('.enterprise-price').addClass('active');
+			$('.ba_price_summary').addClass('autoheight');
+		}else{
+			$('.special-input-message').removeClass('active');
+			$('.price-content').removeClass('hide-content');
+			$('.enterprise-price').removeClass('active');
+			$('.ba_price_summary').removeClass('autoheight');
+		}
+	}
 
 	$(document).on('click', '.each-support', function(e){
 		$('.each-support').removeClass('active');
@@ -412,6 +548,21 @@ jQuery(document).ready(function($){
 		priceData.supportPrice = parseInt($(this).attr('data-price'));
 		title = $(this).attr('data-title');
 
+		renderPrices();
+	})
+
+
+	$(document).on('change','#currency',function(e){
+		e.preventDefault();
+		console.log(this.value);
+		// priceData.jobAmount = this.value;
+		// renderPrices();
+		if(this.value === "dkk"){
+			languge = "danish"
+		}
+		if(this.value === "euro"){
+			languge = "english"
+		}
 		renderPrices();
 	})
 
@@ -471,8 +622,10 @@ jQuery(document).ready(function($){
 
 	$(document).on('click', '#komIGangButton', function(e){
 		e.preventDefault();
+		$("html, body").animate({ scrollTop: 0 }, "slow");
 
 		$('#checkoutContainer').addClass('fade-out-bottom');
+		$('#currencySelectContainer').addClass('fade-out-bottom');
 		setTimeout(function(){
 			var productName;
 			if(priceData.product === "staff"){
@@ -508,10 +661,12 @@ jQuery(document).ready(function($){
 			$('#checkoutContainer').removeClass('fade-out-bottom');
 			$('#submitContainer').addClass('active');
 		}, 400);
+		
 	})
 
 	$(document).on('click', '#backToCheckout', function(e){
 		e.preventDefault();
+		$("html, body").animate({ scrollTop: 0 }, "slow");
 
 		var hash = window.location.hash;
 			console.log(hash);
@@ -520,6 +675,8 @@ jQuery(document).ready(function($){
 				setTimeout(function(){
 					$('#submitContainer').removeClass('active');
 					$('#submitContainer').removeClass('fade-out-bottom');
+					$('#currencySelectContainer').removeClass('fade-out-bottom');
+
 					$('#baCardsView').addClass('active');
 				}, 400);
 			}else{
@@ -528,10 +685,12 @@ jQuery(document).ready(function($){
 					$('#submitContainer').removeClass('active');
 					$('#submitContainer').removeClass('fade-out-bottom');
 					$('#checkoutContainer').addClass('active');
+					$('#currencySelectContainer').removeClass('fade-out-bottom');
+
 				}, 400);
 			}
 
-		
+			runCheckHash();
 	})
 
 
@@ -554,6 +713,32 @@ jQuery(document).ready(function($){
 	}
 
 	$('.ba_price_summary-container').followTo(123);
+
+	// if($(window).width() > 960){
+
+		$(document).on('scroll',function(){
+		
+			var i_pos = $('.around-prices-content').offset();
+			var i_posY = i_pos.top;
+			var i_height = $('.around-prices-content').height();
+			var i_height_px = i_height + "px";
+			var screen_h = $(window).height();
+			var scroll_p = $(document).scrollTop();
+			var o = 0;
+			if((i_posY - scroll_p) < 100) {
+			
+			if((scroll_p + screen_h) < (i_posY + i_height) + 100){
+			
+			document.body.style.setProperty('--h', i_height_px);
+			o = (scroll_p - i_posY) + 100 ;
+			o = o + "px";
+			document.body.style.setProperty('--o', o);
+			}
+			else {}
+			}
+			});
+	// }
+
 
 })
 

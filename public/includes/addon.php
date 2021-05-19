@@ -18,7 +18,7 @@ class Addons {
 
 
     public function getListOfAddons(){
-        $html = '<span class="item-label-stuff">Recruit</span>';
+        $html = '<span class="item-label-stuff item-label-stuff-recruit">Recruit</span>';
         $staffItemsAddons = '';
         $recruitItemsAddons = '';
         foreach ($this->addonsArray as $key => $value) {
@@ -86,7 +86,7 @@ class Addons {
         }
 
         $html .= $recruitItemsAddons;
-        $html .= '<span class="item-label-stuff">Staff</span>';
+        $html .= '<span class="item-label-stuff item-label-stuff-staff">Staff</span>';
         $html .= $staffItemsAddons;
 
         return $html;
@@ -192,24 +192,28 @@ class Addons {
 
 
     public function getPriceInNiceText($price){
-
-        return number_format(intval($price) , 0, ',', '.');
+        $lang = get_locale();
+        if($lang === "da_DK"){
+            return number_format(intval($price) , 0, ',', '.');
+        }else{
+            return number_format(intval($price) , 0, '.', ',');
+        }
     }
 
 
     private function getBasicHtml($title, $price, $from, $id, $product){
         if($from){
-            $priceText = __('from','prices') .": " . 'kr. ' . $this->getPriceInNiceText($price);
+            $priceText = __('from','prices') .": " . '<span class="currency-display">kr.</span> <div class="priceForDisplay" data-price="'. $price .'">' . $this->getPriceInNiceText($price) . '</div>';
         }else{
-            $priceText = 'kr. ' . $this->getPriceInNiceText($price);
-        }
+            $priceText = '<span class="currency-display">kr.</span> <div class="priceForDisplay" data-price="'. $price .'">' . $this->getPriceInNiceText($price) . '</div>';
+        }           
 
         $htmlReturner = "";
 
         $htmlReturner .= '<li class="single-addon" data-product="'. $product .'">
                             <input class="ba_hover single-addon-input" data-price="'. $price .'" data-myid="'.$id.'" type="checkbox" name="'. $product . $id .'" value="'. $id .'" id="'. $product . $id .'"  data-title="'.$title.'">
                             <label for="'. $product . $id .'" class="ba_hover">'. $title .'</label>
-                            <p class="p_price">'. $priceText .'</p>
+                            <div class="p_price">'. $priceText .'</div>
                         </li>';
 
         return $htmlReturner;
@@ -217,9 +221,9 @@ class Addons {
 
     private function getFeaturedHtml($title, $price, $from, $image, $product, $id){
         if($from){
-            $priceText = "From: " . 'kr. ' . $this->getPriceInNiceText($price);
+            $priceText = __('from','prices') .": " . '<span class="currency-display">kr.</span> <div class="priceForDisplay" data-price="'. $price .'">' . $this->getPriceInNiceText($price) . '</div>';
         }else{
-            $priceText = 'kr. ' . $this->getPriceInNiceText($price);
+            $priceText = '<span class="currency-display">kr.</span> <div class="priceForDisplay" data-price="'. $price .'">' . $this->getPriceInNiceText($price) . '</div>';
         }
 
         $htmlReturner = "";
@@ -227,7 +231,7 @@ class Addons {
                             <figure><img src="'. $image .'" alt="addons icon" /></figure>
                             <div class="content">
                                 <h4>'. $title .'</h4>
-                                <p class="p_price">'. $priceText .'</p>
+                                <div class="p_price">'. $priceText .'</div>
                             </div>
                         </div>';
 

@@ -79,8 +79,12 @@ class Product {
 
 
     public function getPriceInNiceText($price){
-
-        return number_format(intval($price) , 0, ',', '.');
+        $lang = get_locale();
+        if($lang === "da_DK"){
+            return number_format(intval($price) , 0, ',', '.');
+        }else{
+            return number_format(intval($price) , 0, '.', ',');
+        }
     }
 
 

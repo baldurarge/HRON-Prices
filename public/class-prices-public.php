@@ -60,7 +60,7 @@ class Prices_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		// wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', $this->version);
+		wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', $this->version);
 		/**
 		 * This function is provided for demonstration purposes only.
 		 *
@@ -82,7 +82,7 @@ class Prices_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		// wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), $this->version);
+		wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), $this->version);
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -121,8 +121,15 @@ function create_newprices_shortcode($atts) {
 	require_once('includes/support.php');
 	require_once('includes/addon.php');
 
-	wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', '1.8.0');
-	wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '1.8.0');
+	$url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+	if (strpos($url,'.local') !== false) {
+		
+		
+	}else{
+		wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', '1.8.0');
+		wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '1.8.0');
+	}
 
 
 	if (get_locale() == 'da_DK') {
@@ -240,6 +247,15 @@ function create_newprices_shortcode($atts) {
 		
 		// preprint($addonsClass);
 		ob_start();
+
+
+
+		if (strpos($url,'.local') !== false) {
+			?>
+			<script type="text/javascript" src="https://livejs.com/live.js"></script>
+			<?php
+		}
+
     ?>
 		<div class="ba_prices-container">
 		<script>
@@ -273,7 +289,6 @@ function create_newprices_shortcode($atts) {
 
 
 		</script>
-			<!-- <script type="text/javascript" src="https://livejs.com/live.js"></script> -->
 			<input class="hidden-translate" hidden data-translateID="from" value="<?php _e('from','prices'); ?>" type="text" />
 			<input class="hidden-translate" hidden data-translateID="free" value="<?php _e('Free','prices'); ?>" type="text" />
 			<input class="hidden-translate" hidden data-translateID="addons" value="<?php _e('addons','prices'); ?>" type="text" />
@@ -282,9 +297,20 @@ function create_newprices_shortcode($atts) {
 			<input class="hidden-translate" hidden data-translateID="totalPrice" value="<?php _e('Total price','prices'); ?>" type="text" />
 			<input class="hidden-translate" hidden data-translateID="yearly" value="<?php _e('Yearly','prices'); ?>" type="text" />
 
+			<div class="ba_form_control active" id="currencySelectContainer">
+					<label class="ba_label" for="currency"><?= _e('Choose currency','prices'); ?></label>
+					<select name="currency" id="currency">
+						<option value="0"><?php _e('Choose','prices'); ?></option>
+						<option value="dkk"><?php _e('Dkk','prices'); ?></option>
+						<option value="euro"><?php _e('Euro','prices'); ?></option>
+					</select>
+				</div>
 			<div class="ba_products_container" id="baCardsView">
 				<!-- ANCHOR Recruit product -->
 				<h2 class="my_h2"><?= _e('Tjek pakkerne herunder og vælg, hvad der passer bedst til dine behov.','prices'); ?></h2>
+				
+				
+
 				<div class="ba_each_product ba_regular_product">
 					<div class="ba_product_header_image">
 						<figure>
@@ -293,7 +319,7 @@ function create_newprices_shortcode($atts) {
 						<h4 class="ba_product_name"><?= $recruitProduct->title ?></h4>
 					</div>
 					<div class="ba_product_price_container">
-						<?= _e('from','prices'); ?><span class="ba_product_price"> kr. <?= $recruitProduct->getPriceInNiceText($recruitProduct->minPrice) ?></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
+						<?= _e('from','prices'); ?> <span class="ba_product_price"> <span class="currency-display">kr.</span> <div class="priceForDisplay" data-price="<?= $recruitProduct->minPrice ?>"><?= $recruitProduct->getPriceInNiceText($recruitProduct->minPrice) ?></div></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
 					</div>
 					<div class="ba_product_included_container">
 						<ul>
@@ -320,7 +346,7 @@ function create_newprices_shortcode($atts) {
 						<h4 class="ba_product_name"><?= $staffProduct->title ?></h4>
 					</div>
 					<div class="ba_product_price_container">
-					<?= _e('from','prices'); ?><span class="ba_product_price"> kr. <?= $staffProduct->getPriceInNiceText($staffProduct->minPrice) ?></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
+					<?= _e('from','prices'); ?><span class="ba_product_price"> <span class="currency-display">kr.</span> <div class="priceForDisplay" data-price="<?= $staffProduct->minPrice ?>"><?= $staffProduct->getPriceInNiceText($staffProduct->minPrice) ?></div></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
 					</div>
 					<div class="ba_product_botton_extra_container">
 						<div class="ba_special_collapse_button">
@@ -349,7 +375,7 @@ function create_newprices_shortcode($atts) {
 						<h4 class="ba_product_name"><?= $suiteProduct->title ?></h4>
 					</div>
 					<div class="ba_product_price_container">
-					<?= _e('from','prices'); ?><span class="ba_product_price"> kr. <?= $suiteProduct->getPriceInNiceText($suiteProduct->minPrice) ?></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
+					<?= _e('from','prices'); ?><span class="ba_product_price"> <span class="currency-display">kr.</span> <div class="priceForDisplay"  data-price="<?= $suiteProduct->minPrice ?>"><?= $suiteProduct->getPriceInNiceText($suiteProduct->minPrice) ?></div></span><span class="ba_small_yearly"> <?= _e('Yearly','prices'); ?></span>
 					</div>
 					<div class="ba_product_included_container">
 						<ul>
@@ -403,19 +429,29 @@ function create_newprices_shortcode($atts) {
 								<div class="ba_form_control" id="recruitmentsSelectContainer">
 									<label class="ba_label" for="recruitments"><?= _e('How many recruitments per year?','prices'); ?></label>
 									<select name="recruitments" id="recruitments">
-										<option value="0"><?php _e('Choose','prices'); ?></option>
-										<option value="1">0 - 5</option>
-										<option value="10">5 - 10</option>
-										<option value="15">10 - 20</option>
-										<option value="35">20 - 50</option>
-										<option value="50">50+</option>
+										<option value="15000" selected><?php _e('Up to', 'prices'); ?> 3</option>
+										<option value="25500"><?php _e('Up to', 'prices'); ?> 6</option>
+										<option value="40200"><?php _e('Up to', 'prices'); ?> 12</option>
+										<option value="62495"><?php _e('Up to', 'prices'); ?> 25</option>
+										<option value="92508"><?php _e('Up to', 'prices'); ?> 50</option>
+										<option value="134525"><?php _e('Up to', 'prices'); ?> 100</option>
+										<option value="enterprise">100+</option>
 									</select>
+									<span class="special-input-message eneterprise-recruit"><?php _e('You are now at enterprise level','prices'); ?></span>
 								</div>
 
 								<div class="ba_form_control" id="staffAmountContainer">
-									<label class="ba_label" for="staffAmount"><?= _e('How many employees do you have?','prices'); ?></label>
-									<input type="number" name="staffAmount" id="staffAmount" placeholder="<?php _e('Type the amount of employees here','prices'); ?>" />
-									<span class="special-input-message"><?php _e('You are now at enterprise level','prices'); ?></span>
+									<label class="ba_label" for="staffAmount"><?= _e('How many employees per year?','prices'); ?></label>
+									<select name="staffAmount" id="staffAmount">
+										<option value="15000" selected><?php _e('Up to', 'prices'); ?> 40</option>
+										<option value="36000"><?php _e('Up to', 'prices'); ?> 100</option>
+										<option value="81000"><?php _e('Up to', 'prices'); ?> 250</option>
+										<option value="151000"><?php _e('Up to', 'prices'); ?> 500</option>
+										<option value="211000"><?php _e('Up to', 'prices'); ?> 750</option>
+										<option value="236000"><?php _e('Up to', 'prices'); ?> 1000</option>
+										<option value="enterprise">1000+</option>
+									</select>
+									<span class="special-input-message eneterprise-staff"><?php _e('You are now at enterprise level','prices'); ?></span>
 								</div>
 							</div>
 						</div>
@@ -432,7 +468,7 @@ function create_newprices_shortcode($atts) {
 											echo '<li>'. $value['include'] .'</li>';
 										}?>
 									</ul>
-									<p class="support_price"><?php _e('Altid inkluderet','prices'); ?></p>
+									<div class="support_price"><?php _e('Altid inkluderet','prices'); ?></div>
 								</div>
 								<div class="each-support silver-support ba_hover" data-support="silver" data-price="<?= $silverSupport->price ?>" data-title="<?= $silverSupport->title ?>">
 									<div class="top-bar"></div>
@@ -442,7 +478,7 @@ function create_newprices_shortcode($atts) {
 											echo '<li>'. $value['include'] .'</li>';
 										}?>
 									</ul>
-									<p class="support_price">kr. <?= $silverSupport->getPriceInNiceText($silverSupport->price); ?></p>
+									<div class="support_price"><span class="currency-display">kr.</span> <div class="priceForDisplay" data-price="<?= $silverSupport->price ?>"><?= $silverSupport->getPriceInNiceText($silverSupport->price); ?></div></div>
 								</div>
 
 								<div class="each-support gold-support ba_hover" data-support="gold" data-price="<?= $goldSupport->price ?>" data-title="<?= $goldSupport->title ?>">
@@ -453,7 +489,7 @@ function create_newprices_shortcode($atts) {
 											echo '<li>'. $value['include'] .'</li>';
 										}?>
 									</ul>
-									<p class="support_price">kr. <?= $goldSupport->getPriceInNiceText($goldSupport->price); ?></p>
+									<div class="support_price"><span class="currency-display">kr.</span> <div class="priceForDisplay" data-price="<?= $goldSupport->price ?>"><?= $goldSupport->getPriceInNiceText($goldSupport->price); ?></div></div>
 								</div>
 								
 							</div>
@@ -477,63 +513,66 @@ function create_newprices_shortcode($atts) {
 						</div>
 					</div>
 					<div class="mobile-ancher"></div>
-					<div class="ba_price_summary-container fade-in-bottom clearfix" >
-						<div class="price-summary-mobile-header" id="finalSummaryMobileHeader">
-							<div class="interaction-icon"><div class="icon"></div></div>
-							<div class="each-summary-price each-full-price">
-								<div>Total price:</div>
-								<div class="summary-price"><?= _e('from','prices'); ?> <span class="ba_product_price" id="mobileHeaderPrice">kr. 30.000</span></div>
-							</div>
-						</div>
-						<div class="ba_price_summary">
-							
-							<!-- <div class=""></div> -->
-							<div class="price-header" id="productImageAndName">
-								<figure><img src="http://hron.local/product/hr-on-recruit/group-89-copy1x/" alt="product logo"/></figure> HR-ON Suite
-							</div>
-							<div class="enterprise-price">
-								<?php _e('You are at an enterprise level. contact us to get the right price','prices'); ?>
-							</div>
-							<div class="price-content">
-								<div class="basic-info">
-									<div class="price-label">
-										<?= _e('Basic information','prices'); ?>
-									</div>
-									<div id="basicPriceContainer">
-									</div>
+					<div class="around-prices-content">
+						<div class="ba_price_summary-container fade-in-bottom clearfix sticky-prices" >
+							<div class="price-summary-mobile-header" id="finalSummaryMobileHeader">
+								<div class="interaction-icon"><div class="icon"></div></div>
+								<div class="each-summary-price each-full-price">
+									<div>Total price:</div>
+									<div class="summary-price"><?= _e('from','prices'); ?> <span class="ba_product_price" id="mobileHeaderPrice"><span class="currency-display">kr.</span> 30.000</span></div>
 								</div>
-								<div class="addons-info" id="addonsSummaryContainer">
-									<div class="price-label">
-										<?= _e('Basic information','prices'); ?>
-									</div>
-									<div id="addonsPriceContainer">
-										<div class="each-basic-price">
-											<div>51 - 100 Recruitments per year</div>
-											<div class="summary-price">From kr. 30.000</div>
+							</div>
+							<div class="ba_price_summary">
+								
+								<!-- <div class=""></div> -->
+								<div class="price-header" id="productImageAndName">
+									<figure><img src="http://hron.local/product/hr-on-recruit/group-89-copy1x/" alt="product logo"/></figure> HR-ON Suite
+								</div>
+								<div class="enterprise-price">
+									<?php _e('You are at an enterprise level. contact us to get the right price','prices'); ?>
+								</div>
+								<div class="price-content">
+									<div class="basic-info">
+										<div class="price-label">
+											<?= _e('Basic information','prices'); ?>
 										</div>
-										<div class="each-basic-price">
-											<div>51 - 100 Recruitments per year</div>
-											<div class="summary-price">From kr. 30.000</div>
+										<div id="basicPriceContainer">
 										</div>
 									</div>
+									
+									<div class="price-summary" id="finalSummary">
+										<div class="each-summary-price">
+											<div>Full price:</div>
+											<div class="summary-price">From <span class="currency-display">kr.</span> 30.000</div>
+										</div>
+										<div class="each-summary-price">
+											<div>Discount - 20%:</div>
+											<div class="summary-price"><span class="currency-display">kr.</span> 30.000</div>
+										</div>
+										<div class="each-summary-price each-full-price">
+											<div>Total price:</div>
+											<div class="summary-price">From <span class="currency-display">kr.</span> 30.000</div>
+										</div>
+									</div>
+									<div class="addons-info" id="addonsSummaryContainer">
+										<div class="price-label">
+											<?= _e('Basic information','prices'); ?>
+										</div>
+										<div id="addonsPriceContainer">
+											<div class="each-basic-price">
+												<div>51 - 100 Recruitments per year</div>
+												<div class="summary-price">From <span class="currency-display">kr.</span> 30.000</div>
+											</div>
+											<div class="each-basic-price">
+												<div>51 - 100 Recruitments per year</div>
+												<div class="summary-price">From <span class="currency-display">kr.</span> 30.000</div>
+											</div>
+										</div>
+									</div>
 								</div>
-								<div class="price-summary" id="finalSummary">
-									<div class="each-summary-price">
-										<div>Full price:</div>
-										<div class="summary-price">From kr. 30.000</div>
-									</div>
-									<div class="each-summary-price">
-										<div>Discount - 20%:</div>
-										<div class="summary-price">kr. 30.000</div>
-									</div>
-									<div class="each-summary-price each-full-price">
-										<div>Total price:</div>
-										<div class="summary-price">From kr. 30.000</div>
-									</div>
+								<div class="price-footer">
+									<button class="ba_bigCTA" id="komIGangButton"><?php _e("Let's do it!",'prices'); ?></button>
 								</div>
-							</div>
-							<div class="price-footer">
-								<button class="ba_bigCTA" id="komIGangButton"><?php _e("Let's do it!",'prices'); ?></button>
 							</div>
 						</div>
 					</div>
