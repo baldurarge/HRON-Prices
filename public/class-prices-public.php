@@ -60,7 +60,7 @@ class Prices_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-		wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', $this->version);
+		// wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', $this->version);
 		/**
 		 * This function is provided for demonstration purposes only.
 		 *
@@ -82,7 +82,7 @@ class Prices_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), $this->version);
+		// wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), $this->version);
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -127,8 +127,8 @@ function create_newprices_shortcode($atts) {
 		
 		
 	}else{
-		wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', '1.8.0');
-		wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '1.8.0');
+		wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', '2.0.0');
+		wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '2.0.0');
 	}
 
 
@@ -252,7 +252,7 @@ function create_newprices_shortcode($atts) {
 
 		if (strpos($url,'.local') !== false) {
 			?>
-			<script type="text/javascript" src="https://livejs.com/live.js"></script>
+			<!-- <script type="text/javascript" src="https://livejs.com/live.js"></script> -->
 			<?php
 		}
 
