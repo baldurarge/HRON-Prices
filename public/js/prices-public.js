@@ -338,7 +338,6 @@ jQuery(document).ready(function($){
 				<div class="summary-price">${numberToNiceString(priceRemoved)}</div>
 			</div>
 			<div class="each-summary-price each-full-price">
-				<div>${languageStrings.totalPrice}</div>
 				<div class="summary-price">${languageStrings.from} <span class="ba_product_price" /> ${numberToNiceString(totalPrice)}</span> ${languageStrings.yearly}</div>
 			</div>
 			`)
