@@ -128,7 +128,7 @@ function create_newprices_shortcode($atts) {
 		
 	}else{
 		wp_enqueue_style('prices_css', plugin_dir_url(__FILE__).'/css/prices-public.css', '2.0.0');
-		wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '2.0.0');
+		wp_enqueue_script('prices_js', plugin_dir_url( __FILE__ ) . 'js/prices-public.js', array('jquery'), '2.0.1');
 	}
 
 
@@ -443,13 +443,15 @@ function create_newprices_shortcode($atts) {
 								<div class="ba_form_control" id="staffAmountContainer">
 									<label class="ba_label" for="staffAmount"><?= _e('How many employees per year?','prices'); ?></label>
 									<select name="staffAmount" id="staffAmount">
-										<option value="15000" selected><?php _e('Up to', 'prices'); ?> 40</option>
-										<option value="36000"><?php _e('Up to', 'prices'); ?> 100</option>
-										<option value="81000"><?php _e('Up to', 'prices'); ?> 250</option>
-										<option value="151000"><?php _e('Up to', 'prices'); ?> 500</option>
-										<option value="211000"><?php _e('Up to', 'prices'); ?> 750</option>
-										<option value="236000"><?php _e('Up to', 'prices'); ?> 1000</option>
-										<option value="enterprise">1000+</option>
+										<option value="15000" selected><?php _e('Up to', 'prices'); ?> 25</option>
+										<option value="18750" selected><?php _e('Up to', 'prices'); ?> 50</option>
+										<option value="27656"><?php _e('Up to', 'prices'); ?> 75</option>
+										<option value="36117"><?php _e('Up to', 'prices'); ?> 100</option>
+										<option value="52193"><?php _e('Up to', 'prices'); ?> 150</option>
+										<option value="67465"><?php _e('Up to', 'prices'); ?> 200</option>
+										<option value="96482"><?php _e('Up to', 'prices'); ?> 300</option>
+										<option value="124048"><?php _e('Up to', 'prices'); ?> 400</option>
+										<option value="enterprise">500+</option>
 									</select>
 									<span class="special-input-message eneterprise-staff"><?php _e('You are now at enterprise level','prices'); ?></span>
 								</div>

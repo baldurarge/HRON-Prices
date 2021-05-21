@@ -338,7 +338,8 @@ jQuery(document).ready(function($){
 				<div class="summary-price">${numberToNiceString(priceRemoved)}</div>
 			</div>
 			<div class="each-summary-price each-full-price">
-				<div class="summary-price">${languageStrings.from} <span class="ba_product_price" /> ${numberToNiceString(totalPrice)}</span> ${languageStrings.yearly}</div>
+				<div>${languageStrings.totalPrice}</div>
+				<div class="summary-price">${languageStrings.from} <span class="ba_product_price" /> ${numberToNiceString(totalPrice)}</span></div>
 			</div>
 			`)
 			$('#mobileHeaderPrice').append(`${numberToNiceString(totalPrice)}`);
@@ -347,7 +348,7 @@ jQuery(document).ready(function($){
 			$('#finalSummary').append(`
 			<div class="each-summary-price each-full-price">
 				<div>${languageStrings.totalPrice}</div>
-				<div class="summary-price">${languageStrings.from} <span class="ba_product_price" /> ${numberToNiceString(fullPrice)}</span> ${languageStrings.yearly}</div>
+				<div class="summary-price">${languageStrings.from} <span class="ba_product_price" /> ${numberToNiceString(fullPrice)}</span></div>
 			</div>
 			`)
 			$('#mobileHeaderPrice').append(`${numberToNiceString(fullPrice)}`);
