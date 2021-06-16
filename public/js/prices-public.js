@@ -13,6 +13,7 @@ jQuery(document).ready(function($){
 		support:"standard",
 		supportPrice:0,
 		addons:[],
+		reacurringAddons:[],
 		imageUrl:null
 	}
 	var languge = "danish";
@@ -75,6 +76,7 @@ jQuery(document).ready(function($){
 			support:"standard",
 			supportPrice:0,
 			addons:[],
+			reacurringAddons:[],
 		}
 
 		$('#recruitments').val('15000');
@@ -125,8 +127,11 @@ jQuery(document).ready(function($){
 		$('#recruitmentsSelectContainer').addClass('active');
 		$('.single-addon[data-product="recruit"]').addClass('show');
 		$('.single-addon[data-product="both"]').addClass('show');
+		$('.each_featured_addon[data-product="recruit"]').addClass('show');
+		$('.each_featured_addon[data-product="both"]').addClass('show');
 		$('.item-label-stuff-recruit').addClass('show');
 
+		$('.each_featured_addon[data-product="staff"]').removeClass('show');
 		$('.item-label-stuff-staff').removeClass('show');
 		$('.single-addon[data-product="staff"]').removeClass('show');
 		$('#staffmentsSelectContainer').removeClass('active');
@@ -142,8 +147,11 @@ jQuery(document).ready(function($){
 		$('#staffAmountContainer').addClass('active');
 		$('.single-addon[data-product="staff"]').addClass('show');
 		$('.single-addon[data-product="both"]').addClass('show');
+		$('.each_featured_addon[data-product="staff"]').addClass('show');
+		$('.each_featured_addon[data-product="both"]').addClass('show');
 		$('.item-label-stuff-staff').addClass('show');
 
+		$('.each_featured_addon[data-product="recruit"]').removeClass('show');
 		$('.item-label-stuff-recruit').removeClass('show');
 		$('.single-addon[data-product="recruit"]').removeClass('show');
 		$('#recruitmentsSelectContainer').removeClass('active');
@@ -161,6 +169,9 @@ jQuery(document).ready(function($){
 		$('.single-addon').addClass('show');
 		$('.item-label-stuff-staff').addClass('show');
 		$('.item-label-stuff-recruit').addClass('show');
+		$('.each_featured_addon[data-product="recruit"]').addClass('show');
+		$('.each_featured_addon[data-product="staff"]').addClass('show');
+		$('.each_featured_addon[data-product="both"]').addClass('show');
 
 		renderPrices();
 	}
@@ -265,16 +276,32 @@ jQuery(document).ready(function($){
 
 	function renderAddons(){
 		$('#addonsSummaryContainer').empty();
+		$('#addonsPriceContainerRepeat').empty();
+
+		if(priceData.reacurringAddons.length >= 1){
+			priceData.reacurringAddons.forEach(addon => {
+				$('#addonsPriceContainerRepeat').append(`
+				<div class="each-basic-price">
+					<div>${addon.title}</div>
+					<div class="summary-price">${numberToNiceString(addon.price)}</div>
+				</div>
+				`);
+			});
+			$('#addonsSummaryContainerRepeat').addClass('show');
+		}else{
+			$('#addonsSummaryContainerRepeat').removeClass('show');
+			console.log("asdasd");
+		}
+
 		if(priceData.addons.length >= 1){
 			$('#addonsSummaryContainer').append(`
 			<div class="price-label">
 				${languageStrings.addons}
 			</div>
 			<div id="addonsPriceContainer">
-			`)
+			`);
 
 			priceData.addons.forEach(addon => {
-
 				$('#addonsSummaryContainer').append(`
 				<div class="each-basic-price">
 					<div>${addon.title}</div>
@@ -313,9 +340,9 @@ jQuery(document).ready(function($){
 			var fullPrice = parseInt(priceData.jobAmount) + parseInt(priceData.staffAmount) + parseInt(priceData.supportPrice);
 		}
 
-		// priceData.addons.forEach(function(addon){
-		// 	fullPrice += addon.price;
-		// })
+		priceData.reacurringAddons.forEach(function(addon){
+			fullPrice += addon.price;
+		})
 		$('#finalSummary').empty();
 		$('#mobileHeaderPrice').empty();
 		if(priceData.discount >= 1){
@@ -477,9 +504,14 @@ jQuery(document).ready(function($){
 			setTimeout(function(){
 				$('#baCardsView').removeClass('active');
 				$('#baCardsView').removeClass('fade-out-bottom');
+				$('#checkoutContainer').addClass('my-fade-in');
 				$('#checkoutContainer').addClass('active');
 				runCheckHash();
 			}, 400);
+
+			setTimeout(function(){
+				$('#checkoutContainer').removeClass('my-fade-in');
+			}, 450);
 		}    
 
 		
@@ -574,15 +606,23 @@ jQuery(document).ready(function($){
 		var addon = {
 			title: $(this).attr('data-title'),
 			price: parseInt($(this).attr('data-price')),
-			id: $(this).attr('data-myid')
+			id: $(this).attr('data-myid'),
+			oneTimePayment: $(this).attr('data-singlepayment')
 		}
 		if($(this).hasClass('active')){
 			$(this).removeClass('active');
-			priceData.addons = removeElementAddon(priceData.addons, addon.id);
-
+			if(addon.oneTimePayment === "yes"){
+				priceData.addons = removeElementAddon(priceData.addons, addon.id);
+			}else{
+				priceData.reacurringAddons = removeElementAddon(priceData.reacurringAddons, addon.id);
+			}
 		}else{
 			$(this).addClass('active');
-			priceData.addons.push(addon);
+			if(addon.oneTimePayment === "yes"){
+				priceData.addons.push(addon);
+			}else{
+				priceData.reacurringAddons.push(addon);
+			}
 		}
 		renderPrices();
 
@@ -592,14 +632,23 @@ jQuery(document).ready(function($){
 		var addon = {
 			title: $(this).attr('data-title'),
 			price: parseInt($(this).attr('data-price')),
-			id: $(this).attr('data-myid')
+			id: $(this).attr('data-myid'),
+			oneTimePayment: $(this).attr('data-singlepayment')
 		}
 		if($(this).hasClass('active')){
 			$(this).removeClass('active');
-			priceData.addons = removeElementAddon(priceData.addons, addon.id);
+			if(addon.oneTimePayment === "yes"){
+				priceData.addons = removeElementAddon(priceData.addons, addon.id);
+			}else{
+				priceData.reacurringAddons = removeElementAddon(priceData.reacurringAddons, addon.id);
+			}
 		}else{
 			$(this).addClass('active');
-			priceData.addons.push(addon);
+			if(addon.oneTimePayment === "yes"){
+				priceData.addons.push(addon);
+			}else{
+				priceData.reacurringAddons.push(addon);
+			}
 		}
 
 		renderPrices();
@@ -691,6 +740,21 @@ jQuery(document).ready(function($){
 			}
 
 			runCheckHash();
+	})
+
+
+	$(document).on('click', '#readMoreRecruitHelp', function(e){
+		e.preventDefault();
+		$('#recruitHelpPopup').addClass('active');
+		$("html").css({ overflow: 'hidden' })
+		
+	})
+
+	$(document).on('click', '#closeHelpButton', function(e){
+		e.preventDefault();
+		$('#recruitHelpPopup').removeClass('active');
+		$("html").css({ overflow: 'inherit' })
+
 	})
 
 

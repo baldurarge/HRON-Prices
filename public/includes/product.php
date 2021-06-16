@@ -13,6 +13,9 @@ class Product {
     public $image;
     public $listOfIncludes;
     public $extraContent;
+    public $helpSmalltext;
+    public $helpBigText;
+    public $other;
 
     
     function __construct($product) {
@@ -75,6 +78,16 @@ class Product {
             }else{
                 $this->extraContent = null;
             }
+
+            $tmpHelp = get_field('help', $this->id);
+
+            $helpSmalltemp = $tmpHelp['small_text'];
+            $helpSmalltemp = str_replace(["\r\n", "\r", "\n"], "<br/>", $helpSmalltemp);
+            $helpBigtext = $tmpHelp['full_text'];
+            $helpBigtext = str_replace(["\r\n", "\r", "\n"], "<br/>", $helpBigtext);
+
+            $this->helpSmalltext = $helpSmalltemp;
+            $this->helpBigtext = $helpBigtext;
     }
 
 

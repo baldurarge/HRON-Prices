@@ -51,16 +51,16 @@ class Addons {
                 if(in_array("Recruit", $value->products)){
                     if($value->recruitPrice){
                         if($value->recruitFrom){
-                            $recruitItemsAddons .= $this->getBasicHtml($value->title, $value->recruitPrice, true, $value->id, "recruit");
+                            $recruitItemsAddons .= $this->getBasicHtml($value->title, $value->recruitPrice, true, $value->id, "recruit", $value->isItSinglePayment);
                         }else{
-                            $recruitItemsAddons .= $this->getBasicHtml($value->title, $value->recruitPrice, false, $value->id, "recruit");
+                            $recruitItemsAddons .= $this->getBasicHtml($value->title, $value->recruitPrice, false, $value->id, "recruit", $value->isItSinglePayment);
                         }
                     }else{
                         if($value->singleFromPrice){
-                            $recruitItemsAddons .= $this->getBasicHtml($value->title, $value->singlePrice, true, $value->id, "recruit");
+                            $recruitItemsAddons .= $this->getBasicHtml($value->title, $value->singlePrice, true, $value->id, "recruit", $value->isItSinglePayment);
 
                         }else{
-                            $recruitItemsAddons .= $this->getBasicHtml($value->title, $value->singlePrice, false, $value->id, "recruit");
+                            $recruitItemsAddons .= $this->getBasicHtml($value->title, $value->singlePrice, false, $value->id, "recruit", $value->isItSinglePayment);
                         }
                     }
                 }
@@ -69,15 +69,15 @@ class Addons {
                     if($value->differentPrice){
                             
                         if($value->staffFrom){
-                            $staffItemsAddons .= $this->getBasicHtml($value->title, $value->staffPrice, true, $value->id, "staff");
+                            $staffItemsAddons .= $this->getBasicHtml($value->title, $value->staffPrice, true, $value->id, "staff", $value->isItSinglePayment);
                         }else{
-                            $staffItemsAddons .= $this->getBasicHtml($value->title, $value->staffPrice, false, $value->id, "staff");
+                            $staffItemsAddons .= $this->getBasicHtml($value->title, $value->staffPrice, false, $value->id, "staff", $value->isItSinglePayment);
                         }
                     }else{
                         if($value->singleFromPrice){
-                            $staffItemsAddons .= $this->getBasicHtml($value->title, $value->singlePrice, true, $value->id, "staff");
+                            $staffItemsAddons .= $this->getBasicHtml($value->title, $value->singlePrice, true, $value->id, "staff", $value->isItSinglePayment);
                         }else{
-                            $staffItemsAddons .= $this->getBasicHtml($value->title, $value->singlePrice, false, $value->id, "staff");
+                            $staffItemsAddons .= $this->getBasicHtml($value->title, $value->singlePrice, false, $value->id, "staff", $value->isItSinglePayment);
                         }
                     }
                 }
@@ -104,46 +104,46 @@ class Addons {
                     if($value->differentPrice){
                         if($value->staffFrom || $value->recruitFrom){
                             if(intval($value->staffPrice) >= intval($value->recruitPrice)){
-                                $html .= $this->getFeaturedHtml($value->title, $value->staffPrice, true, $value->image, "both", $value->id);
+                                $html .= $this->getFeaturedHtml($value->title, $value->staffPrice, true, $value->image, "both", $value->id, $value->isItSinglePayment);
                                 $feturedFound = true;
                             }else{
-                                $html .= $this->getFeaturedHtml($value->title, $value->recruitPrice, true, $value->image, "both", $value->id);
+                                $html .= $this->getFeaturedHtml($value->title, $value->recruitPrice, true, $value->image, "both", $value->id, $value->isItSinglePayment);
                                 $feturedFound = true;
                             }
                         }else{
                             if(intval($value->staffPrice) >= intval($value->recruitPrice)){
-                                $html .= $this->getFeaturedHtml($value->title, $value->staffPrice, false, $value->image, "both", $value->id);
+                                $html .= $this->getFeaturedHtml($value->title, $value->staffPrice, false, $value->image, "both", $value->id, $value->isItSinglePayment);
                                 $feturedFound = true;
                             }else{
-                                $html .= $this->getFeaturedHtml($value->title, $value->recruitPrice, false, $value->image, "both", $value->id);
+                                $html .= $this->getFeaturedHtml($value->title, $value->recruitPrice, false, $value->image, "both", $value->id, $value->isItSinglePayment);
                                 $feturedFound = true;
                             }
                         }
                     }else{
                         if($value->singleFromPrice){
-                            $html .= $this->getFeaturedHtml($value->title, $value->singlePrice, true, $value->image, "both", $value->id);
+                            $html .= $this->getFeaturedHtml($value->title, $value->singlePrice, true, $value->image, "both", $value->id, $value->isItSinglePayment);
                             $feturedFound = true;
                         }else{
-                            $html .= $this->getFeaturedHtml($value->title, $value->singlePrice, false, $value->image, "both", $value->id);
+                            $html .= $this->getFeaturedHtml($value->title, $value->singlePrice, false, $value->image, "both", $value->id, $value->isItSinglePayment);
                             $feturedFound = true;
                         }
                     }
                 }elseif(in_array("Recruit", $value->products)){
                     if($value->recruitPrice){
                         if($value->recruitFrom){
-                            $html .= $this->getFeaturedHtml($value->title, $value->recruitPrice, true, $value->image, "recruit", $value->id);
+                            $html .= $this->getFeaturedHtml($value->title, $value->recruitPrice, true, $value->image, "recruit", $value->id, $value->isItSinglePayment);
                             $feturedFound = true;
                         }else{
-                            $html .= $this->getFeaturedHtml($value->title, $value->recruitPrice, false, $value->image, "recruit", $value->id);
+                            $html .= $this->getFeaturedHtml($value->title, $value->recruitPrice, false, $value->image, "recruit", $value->id, $value->isItSinglePayment);
                             $feturedFound = true;
                         }
                     }else{
                         if($value->singleFromPrice){
-                            $html .= $this->getFeaturedHtml($value->title, $value->singleFromPrice, true, $value->image, "recruit", $value->id);
+                            $html .= $this->getFeaturedHtml($value->title, $value->singleFromPrice, true, $value->image, "recruit", $value->id, $value->isItSinglePayment);
                             $feturedFound = true;
 
                         }else{
-                            $html .= $this->getFeaturedHtml($value->title, $value->singlePrice, false, $value->image, "recruit", $value->id);
+                            $html .= $this->getFeaturedHtml($value->title, $value->singlePrice, false, $value->image, "recruit", $value->id, $value->isItSinglePayment);
                             $feturedFound = true;
                         }
                     }
@@ -151,21 +151,21 @@ class Addons {
                     if($value->differentPrice){
                             
                         if($value->staffFrom){
-                            $html .= $this->getFeaturedHtml($value->title, $value->staffPrice, true, $value->image, "staff", $value->id);
+                            $html .= $this->getFeaturedHtml($value->title, $value->staffPrice, true, $value->image, "staff", $value->id, $value->isItSinglePayment);
                             $feturedFound = true;
                             
                         }else{
                             
-                            $html .= $this->getFeaturedHtml($value->title, $value->staffPrice, false, $value->image, "staff", $value->id);
+                            $html .= $this->getFeaturedHtml($value->title, $value->staffPrice, false, $value->image, "staff", $value->id, $value->isItSinglePayment);
                             $feturedFound = true;
 
                         }
                     }else{
                         if($value->singleFromPrice){
-                            $html .= $this->getFeaturedHtml($value->title, $value->singlePrice, true, $value->image, "staff", $value->id);
+                            $html .= $this->getFeaturedHtml($value->title, $value->singlePrice, true, $value->image, "staff", $value->id, $value->isItSinglePayment);
                             $feturedFound = true;
                         }else{
-                            $html .= $this->getFeaturedHtml($value->title, $value->singlePrice, false, $value->image, "staff", $value->id);
+                            $html .= $this->getFeaturedHtml($value->title, $value->singlePrice, false, $value->image, "staff", $value->id, $value->isItSinglePayment);
                             $feturedFound = true;
                         }
                     }
@@ -201,7 +201,7 @@ class Addons {
     }
 
 
-    private function getBasicHtml($title, $price, $from, $id, $product){
+    private function getBasicHtml($title, $price, $from, $id, $product, $isItSinglePayment){
         if($from){
             $priceText = __('from','prices') .": " . '<span class="currency-display">kr.</span> <div class="priceForDisplay" data-price="'. $price .'">' . $this->getPriceInNiceText($price) . '</div>';
         }else{
@@ -211,7 +211,7 @@ class Addons {
         $htmlReturner = "";
 
         $htmlReturner .= '<li class="single-addon" data-product="'. $product .'">
-                            <input class="ba_hover single-addon-input" data-price="'. $price .'" data-myid="'.$id.'" type="checkbox" name="'. $product . $id .'" value="'. $id .'" id="'. $product . $id .'"  data-title="'.$title.'">
+                            <input class="ba_hover single-addon-input" data-price="'. $price .'" data-myid="'.$id.'" type="checkbox" name="'. $product . $id .'" value="'. $id .'" id="'. $product . $id .'"  data-title="'.$title.'" data-singlePayment="'.$isItSinglePayment.'">
                             <label for="'. $product . $id .'" class="ba_hover">'. $title .'</label>
                             <div class="p_price">'. $priceText .'</div>
                         </li>';
@@ -219,7 +219,7 @@ class Addons {
         return $htmlReturner;
     }
 
-    private function getFeaturedHtml($title, $price, $from, $image, $product, $id){
+    private function getFeaturedHtml($title, $price, $from, $image, $product, $id, $isItSinglePayment){
         if($from){
             $priceText = __('from','prices') .": " . '<span class="currency-display">kr.</span> <div class="priceForDisplay" data-price="'. $price .'">' . $this->getPriceInNiceText($price) . '</div>';
         }else{
@@ -227,7 +227,7 @@ class Addons {
         }
 
         $htmlReturner = "";
-        $htmlReturner .= '<div class="each_featured_addon ba_hover" data-product="'.$product.'" data-price="'.$price.'" data-title="'.$title.'" data-myid="'.$id.'">
+        $htmlReturner .= '<div class="each_featured_addon ba_hover" data-product="'.$product.'" data-price="'.$price.'" data-title="'.$title.'" data-myid="'.$id.'" data-singlePayment="'.$isItSinglePayment.'">
                             <figure><img src="'. $image .'" alt="addons icon" /></figure>
                             <div class="content">
                                 <h4>'. $title .'</h4>
@@ -256,6 +256,7 @@ class Addon {
     public $singlePrice;
     public $singleFromPrice;
     public $groups;
+    public $isItSinglePayment;
     
     function __construct($addon) {
 
@@ -277,6 +278,12 @@ class Addon {
             }
             
             $this->featured = $postFields['featured'];
+            $tmpIsItSingle = $postFields['one_time_payment'];
+            if($tmpIsItSingle === "no"){
+                $this->isItSinglePayment = "no";
+            }else{
+                $this->isItSinglePayment = "yes";
+            }
 
             if($this->featured){
                 $this->image = $postFields['icon'];
