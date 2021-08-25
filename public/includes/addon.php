@@ -227,11 +227,10 @@ class Addons {
         }
 
         $htmlReturner = "";
-        $htmlReturner .= '<div class="each_featured_addon ba_hover" data-product="'.$product.'" data-price="'.$price.'" data-title="'.$title.'" data-myid="'.$id.'" data-singlePayment="'.$isItSinglePayment.'">
+        $htmlReturner .= '<div class="each_featured_addon" data-product="'.$product.'" data-price="'.$price.'" data-title="'.$title.'" data-myid="'.$id.'" data-singlePayment="'.$isItSinglePayment.'">
                             <figure><img src="'. $image .'" alt="addons icon" /></figure>
                             <div class="content">
                                 <h4>'. $title .'</h4>
-                                <div class="p_price">'. $priceText .'</div>
                             </div>
                         </div>';
 

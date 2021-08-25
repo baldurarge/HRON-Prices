@@ -85,9 +85,9 @@
 
 .ba_products_container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 900px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
   grid-template-areas: ". . . .";
@@ -107,7 +107,7 @@
   margin-right: auto;
 }
 .ba_products_container .ba_regular_product {
-  background: #FFFFFF;
+  background: #ffffff;
   border: 1px solid rgba(0, 46, 62, 0.2);
   box-shadow: 0 2px 12px -5px rgba(0, 46, 62, 0.1);
   padding-bottom: 60px;
@@ -123,7 +123,7 @@
   border-top-left-radius: 6px;
 }
 .ba_products_container .ba_special_product {
-  background: #694CE0;
+  background: #694ce0;
   border-radius: 6px;
   box-shadow: 0 2px 12px -5px rgba(0, 46, 62, 0.1);
   color: white;
@@ -134,7 +134,7 @@
   padding-bottom: 85px;
 }
 .ba_products_container .ba_special_product .ba_product_header_image {
-  background: #5947C7;
+  background: #5947c7;
   padding-top: 25px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -150,7 +150,7 @@
   background-image: url("../assets/checkmark-white.svg") !important;
 }
 .ba_products_container .ba_custom_product {
-  background: #F8FAFB;
+  background: #f8fafb;
   border-top-right-radius: 6px;
   border-bottom-left-radius: 6px;
   padding-top: 20px;
@@ -281,11 +281,11 @@
   padding-bottom: 13px !important;
 }
 .ba_products_container .ba_product_cta_container .ba_regular_cta_button {
-  color: #694CE0 !important;
-  border: 1px solid #694CE0 !important;
+  color: #694ce0 !important;
+  border: 1px solid #694ce0 !important;
 }
 .ba_products_container .ba_product_cta_container .ba_major_cta_button {
-  color: #694CE0 !important;
+  color: #694ce0 !important;
   border: 1px solid white !important;
   background-color: white !important;
 }
@@ -375,15 +375,30 @@
   }
 }
 
+.ba_form_control {
+  position: relative;
+}
 .ba_form_control input {
-  background: #F3F6F7 !important;
+  background: #f3f6f7 !important;
   border-radius: 6px !important;
   border: 0 !important;
 }
+.ba_form_control::before {
+  content: "";
+  position: absolute;
+  top: 47px;
+  right: 15px;
+  width: 15px;
+  height: 15px;
+  background-image: url("../assets/triangle.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .ba_form_control select {
-  background: #F3F6F7 !important;
+  background: #f3f6f7 !important;
   border-radius: 6px !important;
   border: 0 !important;
+  position: relative;
 }
 
 .ba_hover {
@@ -416,13 +431,13 @@
   padding: 15px 30px;
   top: -75px;
   left: 30px;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 14px;
   box-shadow: 0px 10px 20px -3px rgba(0, 46, 62, 0.102);
   border: 1px solid rgba(0, 46, 62, 0.02);
   z-index: 10;
   display: block;
-  color: #012D3E;
+  color: #012d3e;
   min-width: 300px;
   display: none;
 }
@@ -444,9 +459,9 @@
 .questionmark-icon .help-popover .read-more-button {
   padding: 7px 15px !important;
   border: 0 !important;
-  background: #F5F7F8 !important;
+  background: #f5f7f8 !important;
   border-radius: 4px !important;
-  color: #012D3E !important;
+  color: #012d3e !important;
 }
 .questionmark-icon .help-popover br {
   display: none;
@@ -486,7 +501,7 @@
   border-radius: 10px;
   font-weight: 300 !important;
   font-family: "roboto" !important;
-  color: #012D3E;
+  color: #012d3e;
   position: relative;
   max-height: 80vh;
   overflow-y: scroll;
@@ -661,12 +676,13 @@
 }
 .ba_checkout_container .support_settings .support_container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   gap: 0px 40px;
 }
 .ba_checkout_container .support_settings .each-support {
-  background: #F3F6F7;
+  max-width: 400px;
+  background: #f3f6f7;
   border-radius: 6px;
   padding: 15px 20px;
   position: relative;
@@ -684,15 +700,15 @@
   width: 100%;
 }
 .ba_checkout_container .support_settings .each-support.silver-support .top-bar {
-  background: #FABF5E;
+  background: #fabf5e;
 }
 .ba_checkout_container .support_settings .each-support.gold-support .top-bar {
-  background: #FABF5E;
+  background: #fabf5e;
 }
 .ba_checkout_container .support_settings .each-support.active {
-  background: #FFFFFF;
+  background: #ffffff;
   background: rgba(105, 76, 224, 0.04);
-  border: 1px solid #694CE0;
+  border: 1px solid #694ce0;
   border-radius: 6px;
   position: relative;
 }
@@ -728,7 +744,7 @@
   width: 100%;
 }
 .ba_checkout_container .addons_settings .featured_addons_container .each_featured_addon {
-  background: #F3F6F7;
+  background: #f3f6f7;
   border-radius: 6px;
   padding: 15px;
   display: flex;
@@ -755,9 +771,9 @@
   font-size: 16px;
 }
 .ba_checkout_container .addons_settings .featured_addons_container .each_featured_addon.active {
-  background: #FFFFFF;
+  background: #ffffff;
   background: rgba(105, 76, 224, 0.04);
-  border: 1px solid #694CE0;
+  border: 1px solid #694ce0;
   border-radius: 6px;
   position: relative;
 }
@@ -773,7 +789,7 @@
   background-repeat: no-repeat;
 }
 .ba_checkout_container .addons_settings .featured_addons_container .each_featured_addon.active h4 {
-  color: #694CE0;
+  color: #694ce0;
 }
 .ba_checkout_container .addons_settings .basic_addons_container_outer {
   margin-top: 40px;
@@ -855,8 +871,8 @@
 }
 .ba_price_summary-container .ba_price_summary {
   margin-top: 20px;
-  background: #FFFFFF;
-  border: 1px solid #694CE0;
+  background: #ffffff;
+  border: 1px solid #694ce0;
   border-radius: 6px;
   min-height: 400px;
   padding: 20px 20px;
@@ -958,11 +974,11 @@
 .ba_price_summary-container .price-footer button {
   margin-left: auto;
   display: inline-block;
-  background: #694CE0 !important;
+  background: #694ce0 !important;
   border-radius: 6px !important;
   font-family: "roboto" !important;
   font-size: 16px !important;
-  color: #F6FBFD !important;
+  color: #f6fbfd !important;
   padding-left: 30px !important;
   padding-right: 30px !important;
   padding-top: 13px !important;
@@ -984,7 +1000,7 @@
   flex-flow: row;
 }
 .ba_price_summary-container #finalSummaryMobileHeader {
-  background: #5947C7;
+  background: #5947c7;
   color: white;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
@@ -1003,7 +1019,7 @@
 .ba_price_summary-container #finalSummaryMobileHeader .interaction-icon {
   width: 30px;
   height: 30px;
-  background: #5947C7;
+  background: #5947c7;
   position: absolute;
   top: -12px;
   border-radius: 50%;
@@ -1033,7 +1049,7 @@
   padding-left: 3px;
 }
 .ba_price_summary-container #addonsSummaryContainer {
-  background: #F5F7F8;
+  background: #f5f7f8;
   border-radius: 3px;
   padding-left: 15px;
   padding-right: 15px;
@@ -1125,11 +1141,11 @@
   width: 80px;
 }
 .submit-page-container .chat-guy-container .chat-bubble {
-  background: #012D3E;
+  background: #012d3e;
   box-shadow: 0 4px 12px -7px rgba(28, 57, 94, 0.5);
   border-radius: 23px 23px 23px 1px;
   font-size: 12px;
-  color: #FFFFFF;
+  color: #ffffff;
   line-height: 20px;
   padding: 15px;
   max-width: 250px;
@@ -1153,7 +1169,7 @@
   border-radius: 6px;
   bottom: -20px;
   left: 30px;
-  background: #F7F6FD;
+  background: #f7f6fd;
   z-index: 0;
   clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
 }
@@ -1164,8 +1180,8 @@
 }
 .submit-page-container .submit-form-container .form-change {
   margin-top: 30px;
-  background: #FFFFFF;
-  border: 1px solid #694CE0 !important;
+  background: #ffffff;
+  border: 1px solid #694ce0 !important;
   border-radius: 6px;
   padding: 50px;
   padding-bottom: 25px;
@@ -1173,12 +1189,12 @@
   z-index: 2;
 }
 .submit-page-container .submit-form-container .form-change input {
-  background: #F3F6F7 !important;
+  background: #f3f6f7 !important;
   border-radius: 6px !important;
   border: 0 !important;
 }
 .submit-page-container .submit-form-container .form-change select {
-  background: #F3F6F7 !important;
+  background: #f3f6f7 !important;
   border-radius: 6px !important;
   border: 0 !important;
 }
@@ -1186,7 +1202,7 @@
   opacity: 0.7;
   font-family: "Roboto";
   font-size: 14px;
-  color: #012D3E;
+  color: #012d3e;
   margin-bottom: 5px;
   text-align: left !important;
 }
@@ -1196,11 +1212,11 @@
 }
 .submit-page-container .submit-form-container .form-change .wpcf7-submit {
   display: inline-block;
-  background: #694CE0 !important;
+  background: #694ce0 !important;
   border-radius: 6px !important;
   font-family: "roboto" !important;
   font-size: 16px !important;
-  color: #F6FBFD !important;
+  color: #f6fbfd !important;
   padding-left: 30px !important;
   padding-right: 30px !important;
   padding-top: 13px !important;
